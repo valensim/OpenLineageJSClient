@@ -1,12 +1,12 @@
-const {RunBuilder} = require("../Run");
+const {RunBuilder} = require("../src/Run");
 const {
   RunFacetsBuilder,
   ErrorMessage,
   Parent,
   ExternalQuery,
   NominalTime
-} = require("../facets/RunFacets");
-const {JobBuilder} = require("../Job");
+} = require("../src/facets/RunFacets");
+const {JobBuilder} = require("../src/Job");
 const {
   JobFacetsBuilder,
   JobType,
@@ -16,7 +16,7 @@ const {
   SourceCode,
   SourceCodeLocation,
   Sql
-} = require("../facets/JobFacets");
+} = require("../src/facets/JobFacets");
 const {
   Item,
   Transformation,
@@ -34,17 +34,17 @@ const {
   Symlinks,
   Identifier,
   Version
-} = require("../facets/DatasetFacets");
-const {TransformationType, FieldTransformationType, EventType} = require("../types");
+} = require("../src/facets/DatasetFacets");
+const {TransformationType, FieldTransformationType, EventType} = require("../src/types");
 const {ColumnMetrics, DataQualityMetrics, InputDatasetFacets} = require(
-	"../facets/InputDatasetFacets");
-const {InputDatasetBuilder} = require("../InputDataset");
-const {OutputDatasetBuilder} = require("../OutputDataset");
+	"../src/facets/InputDatasetFacets");
+const {InputDatasetBuilder} = require("../src/InputDataset");
+const {OutputDatasetBuilder} = require("../src/OutputDataset");
 const {OutputDatasetFacets, OutputStatistics} = require(
-	"../facets/OutputDatasetFacets");
-const { RunEventBuilder } = require("../events/RunEvent");
-const { JobEventBuilder } = require("../events/JobEvent");
-const { DatasetEventBuilder } = require("../events/DatasetEvent");
+	"../src/facets/OutputDatasetFacets");
+const { RunEventBuilder } = require("../src/events/RunEvent");
+const { JobEventBuilder } = require("../src/events/JobEvent");
+const { DatasetEventBuilder } = require("../src/events/DatasetEvent");
 const producer = 'https://example.com/producer';
 const schemaURL = 'https://example.com/schema';
 
