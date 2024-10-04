@@ -1,6 +1,6 @@
 const {getDummyRunEvent, getDummyJobEvent, getDummyDatasetEvent} = require("./DummyEvent");
 
-describe('RunEvent', () => {
+describe('Event Creation', () => {
   it('should comply with the OpenLineage schema', async () => {
 
 	const runEvent = getDummyRunEvent();

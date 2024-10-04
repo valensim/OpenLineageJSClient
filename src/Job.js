@@ -1,5 +1,4 @@
 const { JobFacets } = require("./facets/JobFacets");
-const { removeEmptyFields } = require("./utils/Utils");
 
 /**
  * @class
@@ -50,7 +49,7 @@ class JobBuilder {
    * @returns {JobBuilder}
    */
   addFacets(facets) {
-	this.facets = removeEmptyFields(facets);
+	this.facets = facets;
 	return this;
   }
 

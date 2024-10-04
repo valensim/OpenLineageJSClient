@@ -1,5 +1,4 @@
 const { RunFacets } = require("./facets/RunFacets");
-const { removeEmptyFields } = require("./utils/Utils");
 
 /**
  * @class
@@ -36,7 +35,7 @@ class RunBuilder {
    * @returns {RunBuilder}
    */
   addRunFacets(facets) {
-	this.facets = removeEmptyFields(facets);
+	this.facets = facets;
 	return this;
   }
 

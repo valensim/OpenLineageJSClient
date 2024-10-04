@@ -1,5 +1,5 @@
 const { Dataset } = require("../Datasets");
-const { validateEvent } = require("../utils/Utils");
+const { validateEvent, removeEmptyFields} = require("../utils/Utils");
 const BaseEvent = require("./BaseEvent");
 
 /**
@@ -15,6 +15,7 @@ class DatasetEvent extends BaseEvent{
   constructor(eventTime, producer, schemaURL, dataset) {
 	super(eventTime, producer, schemaURL);
 	this.dataset = dataset;
+	Object.assign(this, removeEmptyFields(this));
   }
 }
 

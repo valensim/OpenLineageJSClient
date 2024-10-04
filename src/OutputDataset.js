@@ -1,7 +1,6 @@
 const { Dataset } = require("./Datasets");
 const { DatasetFacets } = require("./facets/DatasetFacets");
 const { OutputDatasetFacets } = require("./facets/OutputDatasetFacets");
-const {removeEmptyFields} = require("./utils/Utils");
 
 /**
  * @class
@@ -55,7 +54,7 @@ class OutputDatasetBuilder {
    * @returns {OutputDatasetBuilder}
    */
   setFacets(facets) {
-	this.facets = removeEmptyFields(facets);
+	this.facets = facets;
 	return this;
   }
 
@@ -64,7 +63,7 @@ class OutputDatasetBuilder {
    * @returns {OutputDatasetBuilder}
    */
   setOutputFacet(facets) {
-	this.outputFacets = removeEmptyFields(facets);
+	this.outputFacets = facets;
 	return this;
   }
 

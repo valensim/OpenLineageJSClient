@@ -4,7 +4,7 @@ const { OutputDataset } = require('../OutputDataset');
 const Run = require('../Run');
 const { EventType } = require('../types');
 const BaseEvent = require('./BaseEvent')
-const {validateEvent} = require("../utils/Utils");
+const {validateEvent, removeEmptyFields} = require("../utils/Utils");
 
 /**
  * @class
@@ -27,6 +27,7 @@ class RunEvent extends BaseEvent{
 	this.job = job;
 	this.inputs = inputs;
 	this.outputs = outputs;
+	Object.assign(this, removeEmptyFields(this));
   }
 }
 

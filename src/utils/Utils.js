@@ -14,6 +14,12 @@ function removeEmptyFields(obj) {
 	return obj;
   }
 
+  if (Array.isArray(obj)) {
+	return obj
+	.map(removeEmptyFields)
+	.filter(value => value !== null && value !== undefined);
+  }
+
   return Object.fromEntries(
 	  Object.entries(obj)
 	  .map(([key, value]) => [key, removeEmptyFields(value)])
