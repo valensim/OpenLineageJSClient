@@ -45,7 +45,7 @@ class DatasetEventBuilder {
    */
   build() {
 	if(!this.dataset) {
-	  throw new Error('DatasetEvent requires dataset to be set');
+	  throw new Error('DatasetEvent requires "dataset" to be set');
 	}
 	let event = new DatasetEvent(this.eventTime, this.producer, this.schemaURL, this.dataset);
 	validateEvent(event);

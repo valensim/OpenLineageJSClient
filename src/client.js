@@ -1,5 +1,6 @@
 // src/client.js
 const BaseEvent = require("./events/BaseEvent");
+const { ConsoleTransport } = require("./transport/console");
 const { Transport } = require("./transport/Transport");
 
 /**
@@ -21,7 +22,8 @@ class OpenLineageClient {
    */
   emit(event) {
 	if (!this.transport) {
-	  throw new Error("Transport is not set");
+	  this.transport = new ConsoleTransport();
+	  console.log("No transport provided, defaulting to console transport");
 	}
 	this.transport.emit(event);
   }

@@ -66,7 +66,7 @@ class JobEventBuilder {
 
   build() {
 	if (!this.job || !this.inputs || !this.outputs) {
-	  throw new Error('Job, inputs and outputs are required fields for JobEvent');
+	  throw new Error('Job, "inputs" and "outputs" are required fields for JobEvent');
 	}
 	let event = new JobEvent(this.eventTime, this.producer, this.schemaURL, this.job, this.inputs, this.outputs);
 	let validation = validateEvent(event);
