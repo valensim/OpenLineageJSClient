@@ -43,8 +43,11 @@ async function fetchJsonSchema(url) {
 	const response = await axios.get(url, {httpsAgent});
 	return response.data;
   } catch (error) {
-	throw new Error(
-		`Failed to fetch JSON schema from ${url}: ${error.message}`);
+	if (error.response) {
+	  throw new Error(
+		  `Failed to fetch JSON schema from ${url}: ${error.message}`);
+	}
+	throw error;
   }
 }
 
