@@ -6,7 +6,7 @@
     "outDir": "./dist",
     "esModuleInterop": true,
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": false,
     "noEmit": true
   },
   "include": ["src/**/*.js"],

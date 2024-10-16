@@ -98,7 +98,7 @@ const datasetFacets = new DatasetFacetsBuilder()
 .setColumnLineage(columnLineage)
 .setSchema(new Schema(producer, schemaURL,
 	[new SchemaDatasetFacetFields('field', 'type', 'description')]))
-.setDataSource(new DataSource(producer, schemaURL, 'source', 'connection'))
+.setDataSource(new DataSource(producer, schemaURL, 'source', 'https://example.com'))
 .setDataQualityAssertions(new DataQualityAssertions(producer, schemaURL,
 	[new Assertion('asserton name', true, 'assertion')]))
 .setLifecycleStateChange(

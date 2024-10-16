@@ -125,13 +125,14 @@ class DataSource extends DatasetFacet {
    * @param {string} producer
    * @param {string} schemaURL
    * @param {string} name
-   * @param {string} url
+   * @param {string} uri
    * @param {boolean | null} deleted
    */
-  constructor(producer, schemaURL, name, url, deleted = null) {
+  //TODO I should be checking all that should be url to really be a url
+  constructor(producer, schemaURL, name, uri, deleted = null) {
 	super(producer, schemaURL, deleted);
 	this.name = name;
-	this.url = url;
+	this.uri = uri;
   }
 
   /**
