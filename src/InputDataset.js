@@ -21,9 +21,9 @@ class InputDataset extends Dataset{
 }
 
 class InputDatasetBuilder {
-  constructor() {
-	this.name = null;
-	this.namespace = null;
+  constructor(name = null, namespace = null) {
+	this.name = name;
+	this.namespace = namespace;
 	this.facets = {};
 	this.inputFacets = {};
   }
@@ -65,7 +65,7 @@ class InputDatasetBuilder {
   }
 
   build() {
-	if (!this.name || !this.namespace || !this.inputFacets) {
+	if (!this.name || !this.namespace) {
 	  throw new Error('Name and Namespace are required');
 	}
 	return new InputDataset(this.name, this.namespace, this.facets, this.inputFacets);

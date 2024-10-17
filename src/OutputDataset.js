@@ -23,11 +23,11 @@ class OutputDataset extends Dataset{
 
 
 class OutputDatasetBuilder {
-  constructor() {
-	this.name = null;
-	this.namespace = null;
+  constructor(name = null, namespace = null) {
+	this.name = name;
+	this.namespace = namespace;
 	this.facets = {};
-	this.outputFacets = {};
+	this.inputFacets = {};
   }
 
   /**

@@ -1,4 +1,4 @@
-const {getDummyRunEvent} = require("./DummyEvent");
+const {getDummyRunEvent, getDummyJobEvent} = require("./DummyEvent");
 const {ConsoleTransport} = require("../src/transport/console");
 const {OpenLineageClient} = require("../src/client");
 describe('DefaultScenario', () => {
@@ -6,7 +6,7 @@ describe('DefaultScenario', () => {
 
 	const producer = 'https://example.com/producer';
 
-	const event = getDummyRunEvent();
+	const event = getDummyJobEvent("Default Scenario", "Tests");
 	const client = new OpenLineageClient(producer, new ConsoleTransport());
 
 	const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {

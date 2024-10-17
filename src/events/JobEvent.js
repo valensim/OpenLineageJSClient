@@ -13,8 +13,8 @@ class JobEvent extends BaseEvent{
    * @param {string} producer
    * @param {string} schemaURL
    * @param {Job} job
-   * @param {InputDataset[]} inputs
-   * @param {OutputDataset[]} outputs
+   * @param {InputDataset[] | OutputDataset[]} inputs
+   * @param {InputDataset[] | OutputDataset[]} outputs
    */
   constructor(eventTime, producer, schemaURL, job, inputs, outputs) {
 	super(eventTime, producer, schemaURL);
@@ -47,7 +47,7 @@ class JobEventBuilder {
   }
 
   /**
-   * @param {InputDataset[]} inputs
+   * @param {InputDataset[] | OutputDataset[]} inputs
    * @returns {JobEventBuilder}
    */
   setInputs(inputs) {
@@ -56,7 +56,7 @@ class JobEventBuilder {
   }
 
   /**
-   * @param {OutputDataset[]} outputs
+   * @param {InputDataset[] | OutputDataset[]} outputs
    * @returns {JobEventBuilder}
    */
   setOutputs(outputs) {

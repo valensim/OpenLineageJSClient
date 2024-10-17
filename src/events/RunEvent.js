@@ -17,8 +17,8 @@ class RunEvent extends BaseEvent{
    * @param {EventType} eventType
    * @param {Run} run
    * @param {Job} job
-   * @param {InputDataset[]} inputs
-   * @param {OutputDataset[]} outputs
+   * @param {InputDataset[] | OutputDataset[]} inputs
+   * @param {InputDataset[] | OutputDataset[]} outputs
    */
   constructor(eventTime, producer, schemaURL, eventType, run, job, inputs, outputs) {
 	super(eventTime, producer, schemaURL);
@@ -64,7 +64,7 @@ class RunEventBuilder {
   }
 
   /**
-   * @param {InputDataset[]} inputs
+   * @param {InputDataset[] | OutputDataset[]} inputs
    * @returns {RunEventBuilder}
    */
   setInputs(inputs) {
@@ -73,7 +73,7 @@ class RunEventBuilder {
   }
 
   /**
-   * @param {OutputDataset[]} outputs
+   * @param {InputDataset[] | OutputDataset[]} outputs
    * @returns {RunEventBuilder}
    */
   setOutputs(outputs) {
