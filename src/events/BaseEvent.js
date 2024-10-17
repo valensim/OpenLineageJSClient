@@ -1,4 +1,3 @@
-const { removeEmptyFields } = require("../utils/Utils");
 
 /**
  * @class

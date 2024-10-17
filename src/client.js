@@ -20,12 +20,12 @@ class OpenLineageClient {
   /**
    * @param {BaseEvent} event
    */
-  emit(event) {
+  async emit(event) {
 	if (!this.transport) {
 	  this.transport = new ConsoleTransport();
 	  console.log("No transport provided, defaulting to console transport");
 	}
-	this.transport.emit(event);
+	await this.transport.emit(event);
   }
 }
 

@@ -1,4 +1,5 @@
 const {RunBuilder} = require("../src/Run");
+const { v4: uuidv4 } = require('uuid');
 const {
   RunFacetsBuilder,
   ErrorMessage,
@@ -48,40 +49,43 @@ const { DatasetEventBuilder } = require("../src/events/DatasetEvent");
 const producer = 'https://example.com/producer';
 const schemaURL = 'https://example.com/schema';
 
-// Create a Run instance
-const run = new RunBuilder()
-.setRunId('123e4567-e89b-12d3-a456-426614174000')
-.addRunFacets(new RunFacetsBuilder()
-.setErrorMessage(
-	new ErrorMessage(producer, schemaURL, 'error message', 'js',
-		'stack trace'))
-.setParent(new Parent(producer, schemaURL, 'job name', 'job namespace',
-	'123e4567-e89b-12d3-a456-426614174001'))
-.setExternalQuery(new ExternalQuery(producer, schemaURL, '5d', 'source'))
-.setNominalTime(
-	new NominalTime(producer, schemaURL, '2020-12-17T03:00:00.000Z',
-		'2020-12-17T03:05:00.000Z'))
-.build())
-.build();
 
-// Create a Job instance
-const job = new JobBuilder()
-.setName('jobName')
-.setNamespace('namespace')
-.addFacets(new JobFacetsBuilder()
-.setJobType(
-	new JobType(producer, schemaURL, 'STREAMING', 'integration', 'job'))
-.setDocumentation(new Documentation(producer, schemaURL, 'description'))
-.setOwnership(new Ownership(producer, schemaURL,
-	[new Owner('owner name', 'for example Maintainer')]))
-.setSourceCode(
-	new SourceCode(producer, schemaURL, 'javascript', 'console.log(test)'))
-.setSourceCodeLocation(
-	new SourceCodeLocation(producer, schemaURL, 'git|svn', 'url',
-		'repo url', 'path', 'version', 'tag', 'main', false))
-.setSql(new Sql(producer, schemaURL, 'SELECT', true))
-.build())
-.build()
+function generateNewRun(){
+  return new RunBuilder()
+  .setRunId(uuidv4())
+  .addRunFacets(new RunFacetsBuilder()
+  .setErrorMessage(
+	  new ErrorMessage(producer, schemaURL, 'error message', 'js',
+		  'stack trace'))
+  //.setParent(new Parent(producer, schemaURL, 'job name', 'job namespace',
+	//'123e4567-e89b-12d3-a456-426614174001'))
+  .setExternalQuery(new ExternalQuery(producer, schemaURL, '5d', 'source'))
+  .setNominalTime(
+	  new NominalTime(producer, schemaURL, '2020-12-17T03:00:00.000Z',
+		  '2020-12-17T03:05:00.000Z'))
+  .build())
+  .build();
+}
+
+function generateNewJob(name, namespace) {
+  return new JobBuilder()
+  .setName(name)
+  .setNamespace(namespace)
+  .addFacets(new JobFacetsBuilder()
+  .setJobType(
+	  new JobType(producer, schemaURL, 'STREAMING', 'integration', 'job'))
+  .setDocumentation(new Documentation(producer, schemaURL, 'description'))
+  .setOwnership(new Ownership(producer, schemaURL,
+	  [new Owner('owner name', 'for example Maintainer')]))
+  .setSourceCode(
+	  new SourceCode(producer, schemaURL, 'javascript', 'console.log(test)'))
+  .setSourceCodeLocation(
+	  new SourceCodeLocation(producer, schemaURL, 'git|svn', 'url',
+		  'repo url', 'path', 'version', 'tag', 'main', false))
+  .setSql(new Sql(producer, schemaURL, 'SELECT', true))
+  .build())
+  .build();
+}
 
 // Create a ColumnLineage instance
 const item = new Item('namespace', 'name', 'field',
@@ -135,9 +139,10 @@ const outputDataset = new OutputDatasetBuilder()
 .build();
 
 
-function getDummyRunEvent() {
+function getDummyRunEvent(type, job) {
+  const run = generateNewRun();
   return new RunEventBuilder(new Date().toISOString(), producer,
-	  schemaURL, EventType.START)
+	  schemaURL, type)
   .setRun(run)
   .setJob(job)
   .setInputs([inputDataset])
@@ -145,10 +150,10 @@ function getDummyRunEvent() {
   .build();
 }
 
-function getDummyJobEvent() {
+function getDummyJobEvent(name, namespace) {
   return new JobEventBuilder(new Date().toISOString(), producer,
 	  schemaURL)
-  .setJob(job)
+  .setJob(generateNewJob(name, namespace))
   .setInputs([inputDataset])
   .setOutputs([outputDataset])
   .build();
@@ -161,5 +166,5 @@ function getDummyDatasetEvent() {
 }
 
 module.exports = {
-  getDummyRunEvent, getDummyDatasetEvent, getDummyJobEvent
+  getDummyRunEvent, getDummyDatasetEvent, getDummyJobEvent, generateNewRun, generateNewJob
 };

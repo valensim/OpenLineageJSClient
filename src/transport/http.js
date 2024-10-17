@@ -38,7 +38,6 @@ class HttpTransport extends Transport {
   }
 
   getConfig(event) {
-	event['eventType'] = EventType.START;
 	let data = JSON.stringify(event);
 	return {
 	  ...this.options,
@@ -52,7 +51,6 @@ class HttpTransport extends Transport {
    * @returns {Promise<any>}
    */
   async emit(event) {
-	event['eventType'] = EventType.START;
 	let data = JSON.stringify(event);
 	let config = {
 	  ...this.options,
