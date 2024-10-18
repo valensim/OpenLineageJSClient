@@ -1,3 +1,4 @@
+const validator = require('validator');
 /**
  * @class
  * all the facets has to have these
@@ -9,6 +10,9 @@ class BaseFacet {
    * @param {string} schemaURL
    */
   constructor(producer, schemaURL) {
+	if(!validator.isURL(schemaURL) || !validator.isURL(producer)){
+	  throw new Error('Invalid URL');
+	}
 	this._producer = producer;
 	this._schemaURL = schemaURL;
   }

@@ -1,7 +1,4 @@
 const {ConsoleTransport} = require('../src/transport/console');
-const {BaseEvent} = require('../src/events/BaseEvent');
-const {RunEventBuilder} = require("../src/events/RunEvent");
-const {EventType} = require("../src/types");
 const {getDummyRunEvent, getDummyJobEvent} = require("./DummyEvent");
 
 describe('ConsoleTransport', () => {

@@ -37,14 +37,6 @@ class HttpTransport extends Transport {
 	this.options = config.options;
   }
 
-  getConfig(event) {
-	let data = JSON.stringify(event);
-	return {
-	  ...this.options,
-	  url: this.url,
-	  data: data,
-	};
-  }
 
   /**
    * @param {BaseEvent} event

@@ -80,8 +80,8 @@ function generateNewJob(name, namespace) {
   .setSourceCode(
 	  new SourceCode(producer, schemaURL, 'javascript', 'console.log(test)'))
   .setSourceCodeLocation(
-	  new SourceCodeLocation(producer, schemaURL, 'git|svn', 'url',
-		  'repo url', 'path', 'version', 'tag', 'main', false))
+	  new SourceCodeLocation(producer, schemaURL, 'git|svn', 'https://exampleurl.com',
+		  'https://exampleRepoUrl.com', 'path', 'version', 'tag', 'main', false))
   .setSql(new Sql(producer, schemaURL, 'SELECT', true))
   .build())
   .build();

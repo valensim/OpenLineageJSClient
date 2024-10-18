@@ -1,8 +1,6 @@
-// TODO this is the last version how I understand everything else needs to copy this
-
 const { BaseFacet } = require("./BaseFacet");
+const validator = require("validator");
 
-// TODO make these optional I guess fuck this shit sucks they should be able to be null but the fokin schema is killing me
 class JobFacets {
   /**
    * @constructor
@@ -130,6 +128,9 @@ class SourceCodeLocation extends JobFacet {
   constructor(producer, schemaURL, type, url, repoUrl, path, version, tag, branch, deleted = null) {
 	super(producer, schemaURL, deleted);
 	this.type = type;
+	if(!validator.isURL(url) || !validator.isURL(repoUrl)) {
+	  throw new Error("URL and repoUrl must be valid URLs");
+	}
 	this.url = url;
 	this.repoUrl = repoUrl;
 	this.path = path;

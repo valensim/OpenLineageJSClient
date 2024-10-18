@@ -1,3 +1,4 @@
+const validator = require("validator");
 
 /**
  * @class
@@ -10,6 +11,9 @@ class BaseEvent{
    * @param {string} schemaURL
    */
   constructor(eventTime, producer, schemaURL) {
+    if(!validator.isURL(schemaURL) || !validator.isURL(producer)){
+      throw new Error('Invalid URL');
+    }
     this.eventTime = eventTime;
     this.producer = producer;
     this.schemaURL = schemaURL;
