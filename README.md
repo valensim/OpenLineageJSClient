@@ -1,12 +1,12 @@
 # Project Name
 
 ## Overview
-This project is supposed to offer a similar functionality as the Python and Java Open Lineage Clients so creation and transportation of the OL events.
+This project is supposed to offer a similar functionality as the Python and Java Open Lineage [Clients](https://github.com/OpenLineage/OpenLineage/tree/main/client) so creation and transportation of the OL events.
 
 ## Features
 - [x] Event creation and serialization
 - [x] ConsoleTransport
-- [ ] HTTPTransport
+- [x] HTTPTransport
 
 ## Installation
 To install the project dependencies, run:  `npm install`
@@ -30,6 +30,15 @@ const event = new RunEventBuilder(new Date().toISOString(), producer,
 const client = new OpenLineageClient(producer, new ConsoleTransport());
 client.emit(event);
 ``` 
+
+### HTTPTransport
+- create a new instance of the LineageClient with the HTTP transport
+- pass your event to the `emit` method of the client
+```javascript
+const transport = new HttpTransport(new HttpConfig("http://localhost:5000/api/v1/lineage"));
+const client = new OpenLineageClient("https://example.com", transport);
+client.emit(event);
+```
 
 ### Testing
 To run the tests, use the following command: `npm test`
