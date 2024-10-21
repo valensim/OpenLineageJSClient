@@ -13,7 +13,7 @@ class HttpConfig extends Config {
 	super();
 	this.url = url;
 	this.options = {
-	  method: 'post',
+	  method: 'POST',
 	  headers: {
 		'Content-Type': 'application/json',
 		'Accept': 'application/json'
@@ -51,7 +51,8 @@ class HttpTransport extends Transport {
 	};
 	try {
 	  const response = await axios(config)
-	  console.log(response.data);
+	  console.log(response)
+	  //console.log(response.data);
 	  return response.data;
 	}
 	catch (error) {
