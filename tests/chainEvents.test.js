@@ -1,14 +1,13 @@
-const { getDummyRunEvent, generateNewJob} = require("./DummyEvent");
-const { HttpTransport, HttpConfig } = require("../src/transport/http");
-const {EventType} = require("../src/types");
-const {OpenLineageClient} = require("../src/client");
-const {InputDatasetBuilder} = require("../src/InputDataset");
-const {OutputDatasetBuilder} = require("../src/OutputDataset");
-const {JobBuilder} = require("../src/Job");
-const {RunBuilder} = require("../src/Run");
-const { v4: uuidv4 } = require('uuid');
-const {RunEventBuilder} = require("../src/events/RunEvent");
-const {JobFacetsBuilder, JobType} = require("../src/facets/JobFacets");
+import { HttpTransport, HttpConfig } from "../src/transport/http";
+import { EventType } from "../src/types";
+import { OpenLineageClient } from "../src/client";
+import { InputDatasetBuilder } from "../src/InputDataset";
+import { OutputDatasetBuilder } from "../src/OutputDataset";
+import { JobBuilder } from "../src/Job";
+import { RunBuilder } from "../src/Run";
+import { v4 as uuidv4 } from 'uuid';
+import { RunEventBuilder } from "../src/events/RunEvent";
+import { JobFacetsBuilder, JobType } from "../src/facets/JobFacets";
 
 describe('HttpTransport', () => {
   it('should shoot a run event at Marquez', async () => {

@@ -1,4 +1,4 @@
-const { JobFacets } = require("./facets/JobFacets");
+import {JobFacets} from "./facets/JobFacets";
 
 /**
  * @class
@@ -61,4 +61,4 @@ class JobBuilder {
   }
 }
 
-module.exports = {Job, JobBuilder};
+export {Job, JobBuilder};

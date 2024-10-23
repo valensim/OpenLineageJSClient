@@ -1,8 +1,8 @@
-const { InputDataset } = require("../InputDataset");
-const Job = require("../Job");
-const { OutputDataset } = require("../OutputDataset");
-const BaseEvent = require("./BaseEvent");
-const {validateEvent, removeEmptyFields} = require("../utils/Utils");
+import {InputDataset} from "../InputDataset";
+import {Job} from "../Job";
+import {OutputDataset} from "../OutputDataset";
+import {BaseEvent} from "./BaseEvent";
+import {validateEvent, removeEmptyFields} from "../utils/Utils";
 
 /**
  * @class
@@ -75,4 +75,4 @@ class JobEventBuilder {
 	}
   }
 }
-module.exports = {JobEvent, JobEventBuilder};
+export {JobEvent, JobEventBuilder};

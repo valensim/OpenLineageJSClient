@@ -1,7 +1,6 @@
-// src/client.js
-const BaseEvent = require("./events/BaseEvent");
-const { ConsoleTransport } = require("./transport/console");
-const { Transport } = require("./transport/Transport");
+import {BaseEvent} from './events/BaseEvent';
+import { ConsoleTransport } from './transport/console';
+import { Transport } from './transport/Transport';
 
 /**
  * @class
@@ -29,4 +28,4 @@ class OpenLineageClient {
   }
 }
 
-module.exports = {OpenLineageClient};
+export {OpenLineageClient};

@@ -1,4 +1,4 @@
-const validator = require("validator");
+import validator from 'validator';
 
 /**
  * @class
@@ -27,4 +27,4 @@ class BaseEvent{
     }
 }
 
-module.exports = BaseEvent;
+export {BaseEvent};

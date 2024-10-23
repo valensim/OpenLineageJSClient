@@ -1,15 +1,14 @@
-const { getDummyRunEvent, generateNewJob} = require("./DummyEvent");
-const { HttpTransport, HttpConfig } = require("../src/transport/http");
-const axios = require('axios');
-const {EventType} = require("../src/types");
-const {OpenLineageClient} = require("../src/client");
-const nock = require('nock');
+import { generateDummyRunEvent, generateNewJob } from "./DummyEvent";
+import { HttpTransport, HttpConfig } from "../src/transport/http";
+import { EventType } from "../src/types";
+import { OpenLineageClient } from "../src/client";
+import nock from 'nock';
 
 describe('HttpTransport', () => {
   it('should shoot a run event at Marquez', async () => {
 	const url = "http://localhost:8080/api/v1/lineage";
 	const job = generateNewJob('httpTransport', 'clientTests');
-	const runEvent = getDummyRunEvent(EventType.COMPLETE, job);
+	const runEvent = generateDummyRunEvent(EventType.COMPLETE, job);
 	const transport = new HttpTransport(new HttpConfig(url));
 	const client = new OpenLineageClient("https://example.com", transport);
 	 const scope = nock('http://localhost:8080')

@@ -1,4 +1,4 @@
-const { RunFacets } = require("./facets/RunFacets");
+import {RunFacets} from "./facets/RunFacets";
 
 /**
  * @class
@@ -48,4 +48,4 @@ class RunBuilder {
   }
 }
 
-module.exports = {Run, RunBuilder};
+export {Run, RunBuilder};

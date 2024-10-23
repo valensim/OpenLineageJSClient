@@ -1,6 +1,6 @@
-const { Dataset } = require("./Datasets");
-const { DatasetFacets } = require("./facets/DatasetFacets");
-const { OutputDatasetFacets } = require("./facets/OutputDatasetFacets");
+import {Dataset} from "./Datasets";
+import {DatasetFacets} from "./facets/DatasetFacets";
+import {OutputDatasetFacets} from "./facets/OutputDatasetFacets";
 
 /**
  * @class
@@ -75,4 +75,4 @@ class OutputDatasetBuilder {
   }
 }
 
-module.exports = {OutputDatasetBuilder, OutputDataset};
+export{OutputDatasetBuilder, OutputDataset};

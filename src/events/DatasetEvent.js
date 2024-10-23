@@ -1,6 +1,6 @@
-const { Dataset } = require("../Datasets");
-const { validateEvent, removeEmptyFields} = require("../utils/Utils");
-const BaseEvent = require("./BaseEvent");
+import {Dataset} from "../Datasets";
+import {validateEvent, removeEmptyFields} from "../utils/Utils";
+import {BaseEvent} from "./BaseEvent";
 
 /**
  * @class
@@ -52,4 +52,4 @@ class DatasetEventBuilder {
 	return event;
   }
 }
-module.exports = {DatasetEvent, DatasetEventBuilder};
+export {DatasetEvent, DatasetEventBuilder};

@@ -1,7 +1,7 @@
-const {BaseFacet, BaseFacetBuilder} = require("./BaseFacet");
-const {Ownership} = require("./JobFacets");
-const {TransformationType, FieldTransformationType} = require("../types");
-const validator = require("validator");
+import {BaseFacet} from "./BaseFacet";
+import {Ownership} from "./JobFacets";
+import {TransformationType, FieldTransformationType} from "../types";
+import validator from 'validator';
 
 class DatasetFacets {
   /**
@@ -129,7 +129,6 @@ class DataSource extends DatasetFacet {
    * @param {string} uri
    * @param {boolean | null} deleted
    */
-  //TODO I should be checking all that should be url to really be a url
   constructor(producer, schemaURL, name, uri, deleted = null) {
 	super(producer, schemaURL, deleted);
 	this.name = name;
@@ -436,4 +435,4 @@ class DatasetFacetsBuilder{
   }
 }
 
-module.exports = {DatasetFacetsBuilder, DatasetFacets, Ownership, ColumnLineage, Field, Item, Transformation, DataSource, DataQualityAssertions, Assertion, LifecycleStateChange, PreviousIdentifier, Schema, SchemaDatasetFacetFields, Storage, Symlinks, Identifier, Version};
+export {DatasetFacetsBuilder, DatasetFacets, Ownership, ColumnLineage, Field, Item, Transformation, DataSource, DataQualityAssertions, Assertion, LifecycleStateChange, PreviousIdentifier, Schema, SchemaDatasetFacetFields, Storage, Symlinks, Identifier, Version};

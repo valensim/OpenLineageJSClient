@@ -1,4 +1,4 @@
-const BaseEvent = require("../events/BaseEvent");
+import {BaseEvent} from "../events/BaseEvent";
 
 /**
  * @class Transport
@@ -28,4 +28,4 @@ class Config {
     }
 }
 
-module.exports = {Transport, Config};
+export {Transport, Config};

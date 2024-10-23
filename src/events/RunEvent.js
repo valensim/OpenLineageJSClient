@@ -1,10 +1,10 @@
-const { InputDataset } = require('../InputDataset');
-const Job = require('../Job');
-const { OutputDataset } = require('../OutputDataset');
-const Run = require('../Run');
-const { EventType } = require('../types');
-const BaseEvent = require('./BaseEvent')
-const {validateEvent, removeEmptyFields} = require("../utils/Utils");
+import { InputDataset } from '../InputDataset';
+import {Job} from '../Job';
+import { OutputDataset } from '../OutputDataset';
+import {Run} from '../Run';
+import { EventType } from '../types';
+import {BaseEvent} from './BaseEvent';
+import { validateEvent, removeEmptyFields } from "../utils/Utils";
 
 /**
  * @class
@@ -96,5 +96,4 @@ class RunEventBuilder {
 	}
   }
 }
-module.exports = RunEvent;
-module.exports.RunEventBuilder = RunEventBuilder;
+export {RunEvent, RunEventBuilder};

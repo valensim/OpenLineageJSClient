@@ -1,7 +1,6 @@
-const BaseEvent = require("../events/BaseEvent");
-const {Transport, Config} = require("./Transport");
-const axios = require('axios');
-const {EventType} = require("../types");
+import {BaseEvent} from "../events/BaseEvent";
+import {Transport, Config} from "./Transport";
+import axios from 'axios';
 
 
 class HttpConfig extends Config {
@@ -51,15 +50,14 @@ class HttpTransport extends Transport {
 	};
 	try {
 	  const response = await axios(config)
-	  console.log(response)
-	  //console.log(response.data);
+	  console.debug(response)
 	  return response.data;
 	}
 	catch (error) {
-	 console.log(error);
+	 console.error(error);
 	 return error;
 	}
   }
 }
 
-module.exports = {HttpTransport, HttpConfig};
+export {HttpTransport, HttpConfig};

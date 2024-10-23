@@ -1,5 +1,5 @@
-const { BaseFacet } = require("./BaseFacet");
-const validator = require("validator");
+import {BaseFacet} from "./BaseFacet";
+import validator from "validator";
 
 class JobFacets {
   /**
@@ -256,4 +256,4 @@ class JobFacetsBuilder {
 	return new JobFacets(this._documentation, this._ownership, this._sourceCode, this._sourceCodeLocation, this._sql, this._jobType);
   }
 }
-module.exports = {JobFacets, JobFacetsBuilder, JobType, Documentation, Sql, Ownership, SourceCode, SourceCodeLocation, Owner}
+export {JobFacets, JobFacetsBuilder, JobType, Documentation, Sql, Ownership, SourceCode, SourceCodeLocation, Owner}

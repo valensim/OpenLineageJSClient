@@ -1,14 +1,13 @@
-const {RunBuilder} = require("../src/Run");
-const { v4: uuidv4 } = require('uuid');
-const {
+import { RunBuilder } from "../src/Run";
+import { v4 as uuidv4 } from 'uuid';
+import {
   RunFacetsBuilder,
   ErrorMessage,
-  Parent,
   ExternalQuery,
   NominalTime
-} = require("../src/facets/RunFacets");
-const {JobBuilder} = require("../src/Job");
-const {
+} from "../src/facets/RunFacets";
+import { JobBuilder } from "../src/Job";
+import {
   JobFacetsBuilder,
   JobType,
   Documentation,
@@ -17,8 +16,8 @@ const {
   SourceCode,
   SourceCodeLocation,
   Sql
-} = require("../src/facets/JobFacets");
-const {
+} from "../src/facets/JobFacets";
+import {
   Item,
   Transformation,
   Field,
@@ -35,17 +34,22 @@ const {
   Symlinks,
   Identifier,
   Version
-} = require("../src/facets/DatasetFacets");
-const {TransformationType, FieldTransformationType, EventType} = require("../src/types");
-const {ColumnMetrics, DataQualityMetrics, InputDatasetFacets} = require(
-	"../src/facets/InputDatasetFacets");
-const {InputDatasetBuilder} = require("../src/InputDataset");
-const {OutputDatasetBuilder} = require("../src/OutputDataset");
-const {OutputDatasetFacets, OutputStatistics} = require(
-	"../src/facets/OutputDatasetFacets");
-const { RunEventBuilder } = require("../src/events/RunEvent");
-const { JobEventBuilder } = require("../src/events/JobEvent");
-const { DatasetEventBuilder } = require("../src/events/DatasetEvent");
+} from "../src/facets/DatasetFacets";
+import { TransformationType, FieldTransformationType, EventType } from "../src/types";
+import {
+  ColumnMetrics,
+  DataQualityMetrics,
+  InputDatasetFacets
+} from "../src/facets/InputDatasetFacets";
+import { InputDatasetBuilder } from "../src/InputDataset";
+import { OutputDatasetBuilder } from "../src/OutputDataset";
+import {
+  OutputDatasetFacets,
+  OutputStatistics
+} from "../src/facets/OutputDatasetFacets";
+import { RunEventBuilder } from "../src/events/RunEvent";
+import { JobEventBuilder } from "../src/events/JobEvent";
+import { DatasetEventBuilder } from "../src/events/DatasetEvent";
 const producer = 'https://example.com/producer';
 const schemaURL = 'https://example.com/schema';
 
@@ -57,8 +61,6 @@ function generateNewRun(){
   .setErrorMessage(
 	  new ErrorMessage(producer, schemaURL, 'error message', 'js',
 		  'stack trace'))
-  //.setParent(new Parent(producer, schemaURL, 'job name', 'job namespace',
-	//'123e4567-e89b-12d3-a456-426614174001'))
   .setExternalQuery(new ExternalQuery(producer, schemaURL, '5d', 'source'))
   .setNominalTime(
 	  new NominalTime(producer, schemaURL, '2020-12-17T03:00:00.000Z',
@@ -141,7 +143,7 @@ const outputDataset = new OutputDatasetBuilder()
 
 
 
-function getDummyRunEvent(type, job) {
+function generateDummyRunEvent(type, job) {
   const run = generateNewRun();
   return new RunEventBuilder(new Date().toISOString(), producer,
 	  schemaURL, type)
@@ -152,7 +154,7 @@ function getDummyRunEvent(type, job) {
   .build();
 }
 
-function getDummyJobEvent(name, namespace) {
+function generateDummyJobEvent(name, namespace) {
   return new JobEventBuilder(new Date().toISOString(), producer,
 	  schemaURL)
   .setJob(generateNewJob(name, namespace))
@@ -161,12 +163,10 @@ function getDummyJobEvent(name, namespace) {
   .build();
 }
 
-function getDummyDatasetEvent() {
+function generateDummyDatasetEvent() {
   return new DatasetEventBuilder(new Date().toISOString(), producer, schemaURL)
   .setDataset(inputDataset)
   .build();
 }
 
-module.exports = {
-  getDummyRunEvent, getDummyDatasetEvent, getDummyJobEvent, generateNewRun, generateNewJob
-};
+export { generateDummyRunEvent, generateDummyDatasetEvent, generateDummyJobEvent, generateNewRun, generateNewJob};

@@ -1,7 +1,7 @@
 // @ts-nocheck
 // src/types.js
 
-const {Dataset} = require("./Datasets");
+import {Dataset} from "./Datasets";
 
 /**
  * Enum for the event types in OpenLineage.
@@ -43,4 +43,4 @@ const FieldTransformationType = Object.freeze({
  * @property {Dataset[]} outputs
  */
 
-module.exports = {EventType, TransformationType, FieldTransformationType};
+export {EventType, TransformationType, FieldTransformationType};

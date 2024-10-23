@@ -1,4 +1,4 @@
-const validator = require('validator');
+import validator from 'validator';
 /**
  * @class
  * all the facets has to have these
@@ -50,4 +50,4 @@ class BaseFacetBuilder {
   }
 }
 
-module.exports = {BaseFacet, BaseFacetBuilder};
+export {BaseFacet, BaseFacetBuilder};

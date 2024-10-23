@@ -1,6 +1,5 @@
-const {BaseFacet, BaseFacetBuilder } = require("./BaseFacet");
+import {BaseFacet} from "./BaseFacet";
 
-//TODO handling of what atributes are required and what not according to the documentation viz https://openlineage.io/docs/spec/facets/run-facets/
 class RunFacets {
   /**
    * @constructor
@@ -152,4 +151,4 @@ class RunFacetsBuilder{
   }
 }
 
-module.exports = {RunFacets, RunFacetsBuilder, ErrorMessage, Parent, NominalTime, ExternalQuery};
+export {RunFacets, RunFacetsBuilder, ErrorMessage, Parent, NominalTime, ExternalQuery};
