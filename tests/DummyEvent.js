@@ -73,6 +73,7 @@ function generateNewJob(name, namespace) {
   return new JobBuilder()
   .setName(name)
   .setNamespace(namespace)
+  .addFacets({})
   .addFacets(new JobFacetsBuilder()
   .setJobType(
 	  new JobType(producer, schemaURL, 'STREAMING', 'integration', 'job'))

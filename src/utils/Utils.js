@@ -35,8 +35,6 @@ function validateEvent(jsonObject) {
   // Convert the RunEvent to JSON
   const eventJson = instanceToPlain(jsonObject);
 
-  delete schema.$schema;
-
   const ajv = new Ajv({
 	strict: false,
 	ignoreKeywordsWithRef: true // This option is useful to ignore $schema references.
