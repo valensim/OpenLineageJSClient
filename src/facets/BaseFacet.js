@@ -1,4 +1,5 @@
 import validator from 'validator';
+
 /**
  * @class
  * all the facets has to have these
@@ -10,7 +11,7 @@ class BaseFacet {
    * @param {string} schemaURL
    */
   constructor(producer, schemaURL) {
-	if(!validator.isURL(schemaURL) || !validator.isURL(producer)){
+	if (!validator.isURL(schemaURL) || !validator.isURL(producer)) {
 	  throw new Error('Invalid URL');
 	}
 	this._producer = producer;
@@ -44,7 +45,8 @@ class BaseFacetBuilder {
 
   build() {
 	if (!this._producer || !this._schemaURL) {
-	  throw new Error('Producer and schemaURL are required fields for BaseFacet');
+	  throw new Error(
+		  'Producer and schemaURL are required fields for BaseFacet');
 	}
 	return new BaseFacet(this._producer, this._schemaURL);
   }

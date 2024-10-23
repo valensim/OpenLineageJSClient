@@ -31,6 +31,7 @@ class ErrorMessage extends BaseFacet {
 	this.programmingLanguage = programmingLanguage;
 	this.stackTrace = stackTrace || null;
   }
+
   /**
    * @returns {string}
    */
@@ -105,7 +106,7 @@ class Parent extends BaseFacet {
   }
 }
 
-class RunFacetsBuilder{
+class RunFacetsBuilder {
   constructor() {
 	this._errorMessage = null;
 	this._externalQuery = null;
@@ -121,6 +122,7 @@ class RunFacetsBuilder{
 	this._errorMessage = errorMessage;
 	return this;
   }
+
   /**
    * @param {ExternalQuery | null} externalQuery
    * @returns {RunFacetsBuilder}
@@ -129,6 +131,7 @@ class RunFacetsBuilder{
 	this._externalQuery = externalQuery;
 	return this;
   }
+
   /**
    * @param {NominalTime | null} nominalTime
    * @returns {RunFacetsBuilder}
@@ -137,6 +140,7 @@ class RunFacetsBuilder{
 	this._nominalTime = nominalTime;
 	return this;
   }
+
   /**
    * @param {Parent | null} parent
    * @returns {RunFacetsBuilder}
@@ -147,8 +151,16 @@ class RunFacetsBuilder{
   }
 
   build() {
-	return new RunFacets(this._errorMessage, this._externalQuery, this._nominalTime, this._parent);
+	return new RunFacets(this._errorMessage, this._externalQuery,
+		this._nominalTime, this._parent);
   }
 }
 
-export {RunFacets, RunFacetsBuilder, ErrorMessage, Parent, NominalTime, ExternalQuery};
+export {
+  RunFacets,
+  RunFacetsBuilder,
+  ErrorMessage,
+  Parent,
+  NominalTime,
+  ExternalQuery
+};

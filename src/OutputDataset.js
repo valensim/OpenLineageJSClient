@@ -6,7 +6,7 @@ import {OutputDatasetFacets} from "./facets/OutputDatasetFacets";
  * @class
  * @extends Dataset
  */
-class OutputDataset extends Dataset{
+class OutputDataset extends Dataset {
   /**
    *
    * @param {string} name
@@ -19,8 +19,6 @@ class OutputDataset extends Dataset{
 	this.outputFacets = outputFacets;
   }
 }
-
-
 
 class OutputDatasetBuilder {
   constructor(name = null, namespace = null) {
@@ -71,8 +69,9 @@ class OutputDatasetBuilder {
 	if (!this.name || !this.namespace) {
 	  throw new Error('Name and Namespace are required');
 	}
-	return new OutputDataset(this.name, this.namespace, this.facets, this.outputFacets);
+	return new OutputDataset(this.name, this.namespace, this.facets,
+		this.outputFacets);
   }
 }
 
-export{OutputDatasetBuilder, OutputDataset};
+export {OutputDatasetBuilder, OutputDataset};

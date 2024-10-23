@@ -6,7 +6,7 @@ import {InputDatasetFacets} from "./facets/InputDatasetFacets";
  * @class
  * @extends Dataset
  */
-class InputDataset extends Dataset{
+class InputDataset extends Dataset {
   /**
    *
    * @param {string} name
@@ -68,7 +68,8 @@ class InputDatasetBuilder {
 	if (!this.name || !this.namespace) {
 	  throw new Error('Name and Namespace are required');
 	}
-	return new InputDataset(this.name, this.namespace, this.facets, this.inputFacets);
+	return new InputDataset(this.name, this.namespace, this.facets,
+		this.inputFacets);
   }
 }
 

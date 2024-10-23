@@ -1,15 +1,15 @@
-import { InputDataset } from '../InputDataset';
+import {InputDataset} from '../InputDataset';
 import {Job} from '../Job';
-import { OutputDataset } from '../OutputDataset';
+import {OutputDataset} from '../OutputDataset';
 import {Run} from '../Run';
-import { EventType } from '../types';
+import {EventType} from '../types';
 import {BaseEvent} from './BaseEvent';
-import { validateEvent, removeEmptyFields } from "../utils/Utils";
+import {validateEvent, removeEmptyFields} from "../utils/Utils";
 
 /**
  * @class
  */
-class RunEvent extends BaseEvent{
+class RunEvent extends BaseEvent {
   /**
    * @param {string} eventTime
    * @param {string} producer
@@ -20,7 +20,8 @@ class RunEvent extends BaseEvent{
    * @param {InputDataset[] | OutputDataset[]} inputs
    * @param {InputDataset[] | OutputDataset[]} outputs
    */
-  constructor(eventTime, producer, schemaURL, eventType, run, job, inputs, outputs) {
+  constructor(eventTime, producer, schemaURL, eventType, run, job, inputs,
+	  outputs) {
 	super(eventTime, producer, schemaURL);
 	this.eventType = eventType;
 	this.run = run;
@@ -86,14 +87,17 @@ class RunEventBuilder {
    * @returns {RunEvent | undefined}
    */
   build() {
-	if (this.run === undefined || this.job === undefined || this.inputs === undefined || this.outputs === undefined){
+	if (this.run === undefined || this.job === undefined || this.inputs
+		=== undefined || this.outputs === undefined) {
 	  throw new Error("RunEventBuilder: Required fields are missing");
 	}
-	let event = new RunEvent(this.eventTime, this.producer, this.schemaURL, this.eventType, this.run, this.job, this.inputs, this.outputs);
+	let event = new RunEvent(this.eventTime, this.producer, this.schemaURL,
+		this.eventType, this.run, this.job, this.inputs, this.outputs);
 	let validation = validateEvent(event);
-	if(validation === true){
+	if (validation === true) {
 	  return event;
 	}
   }
 }
+
 export {RunEvent, RunEventBuilder};

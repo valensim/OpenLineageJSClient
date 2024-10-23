@@ -20,12 +20,12 @@ class Transport {
  * @class Config
  */
 class Config {
-    constructor() {
-    }
+  constructor() {
+  }
 
   fromFile() {
-        throw new Error("Config.fromFile must be overridden");
-    }
+	throw new Error("Config.fromFile must be overridden");
+  }
 }
 
 export {Transport, Config};

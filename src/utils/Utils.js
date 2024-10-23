@@ -1,4 +1,4 @@
-import { instanceToPlain } from 'class-transformer';
+import {instanceToPlain} from 'class-transformer';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import schema from '../schemas/eventSchema.json';
@@ -32,30 +32,25 @@ function removeEmptyFields(obj) {
  * @returns {boolean} - Resolves to true if valid, otherwise throws an error.
  */
 function validateEvent(jsonObject) {
-  try {
-	// Convert the RunEvent to JSON
-	const eventJson = instanceToPlain(jsonObject);
+  // Convert the RunEvent to JSON
+  const eventJson = instanceToPlain(jsonObject);
 
-	delete schema.$schema;
+  delete schema.$schema;
 
-	const ajv = new Ajv({
-	  strict: false,
-	  ignoreKeywordsWithRef: true // This option is useful to ignore $schema references.
-	});
-	addFormats(ajv);
-	const validate = ajv.compile(schema);
+  const ajv = new Ajv({
+	strict: false,
+	ignoreKeywordsWithRef: true // This option is useful to ignore $schema references.
+  });
+  addFormats(ajv);
+  const validate = ajv.compile(schema);
 
-	const valid = validate(eventJson);
-	if (!valid) {
-	  console.error('Validation errors:', validate.errors);
-	  throw new Error('JSON object does not comply with the schema');
-	}
-	return true;
-
-  } catch (error) {
-	console.log(error)
-	throw new Error(`Validation failed: ${error.message}`);
+  const valid = validate(eventJson);
+  if (!valid) {
+	console.error('Validation errors:', validate.errors);
+	throw new Error('JSON object does not comply with the schema');
   }
+  return true;
+
 }
 
-export { removeEmptyFields, validateEvent};
+export {removeEmptyFields, validateEvent};

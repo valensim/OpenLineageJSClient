@@ -10,8 +10,7 @@ class OutputDatasetFacets {
   }
 }
 
-
-class OutputStatistics extends BaseFacet{
+class OutputStatistics extends BaseFacet {
   /**
    * @param {string} producer
    * @param {string} schemaURL

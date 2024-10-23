@@ -2,7 +2,6 @@ import {BaseEvent} from "../events/BaseEvent";
 import {Transport, Config} from "./Transport";
 import axios from 'axios';
 
-
 class HttpConfig extends Config {
   /**
    * @param {string} url
@@ -36,7 +35,6 @@ class HttpTransport extends Transport {
 	this.options = config.options;
   }
 
-
   /**
    * @param {BaseEvent} event
    * @returns {Promise<any>}
@@ -52,10 +50,9 @@ class HttpTransport extends Transport {
 	  const response = await axios(config)
 	  console.debug(response)
 	  return response.data;
-	}
-	catch (error) {
-	 console.error(error);
-	 return error;
+	} catch (error) {
+	  console.error(error);
+	  return error;
 	}
   }
 }

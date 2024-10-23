@@ -3,15 +3,15 @@ import {RunFacets} from "./facets/RunFacets";
 /**
  * @class
  */
-class Run{
+class Run {
   /**
    *
    * @param {string} runId
    * @param {{}} facets
    */
   constructor(runId, facets = {}) {
-		this.runId = runId;
-		this.facets = facets;
+	this.runId = runId;
+	this.facets = facets;
   }
 }
 

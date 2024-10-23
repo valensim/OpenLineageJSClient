@@ -83,7 +83,8 @@ class Field {
    * @param {string | null} transformationDescription
    * @param {FieldTransformationType | null} transformationType
    */
-  constructor(inputFields, transformationDescription = null, transformationType = null) {
+  constructor(inputFields, transformationDescription = null,
+	  transformationType = null) {
 	this.inputFilelds = inputFields;
 	this.transformationDescription = transformationDescription;
 	this.transformationType = transformationType;
@@ -132,7 +133,7 @@ class DataSource extends DatasetFacet {
   constructor(producer, schemaURL, name, uri, deleted = null) {
 	super(producer, schemaURL, deleted);
 	this.name = name;
-	if(!validator.isURL(uri)){
+	if (!validator.isURL(uri)) {
 	  throw new Error("uri must be a valid URL");
 	}
 	this.uri = uri;
@@ -330,7 +331,7 @@ class Version extends DatasetFacet {
   }
 }
 
-class DatasetFacetsBuilder{
+class DatasetFacetsBuilder {
   constructor() {
 	this.columnLineage = null;
 	this.dataSource = null;
@@ -435,4 +436,23 @@ class DatasetFacetsBuilder{
   }
 }
 
-export {DatasetFacetsBuilder, DatasetFacets, Ownership, ColumnLineage, Field, Item, Transformation, DataSource, DataQualityAssertions, Assertion, LifecycleStateChange, PreviousIdentifier, Schema, SchemaDatasetFacetFields, Storage, Symlinks, Identifier, Version};
+export {
+  DatasetFacetsBuilder,
+  DatasetFacets,
+  Ownership,
+  ColumnLineage,
+  Field,
+  Item,
+  Transformation,
+  DataSource,
+  DataQualityAssertions,
+  Assertion,
+  LifecycleStateChange,
+  PreviousIdentifier,
+  Schema,
+  SchemaDatasetFacetFields,
+  Storage,
+  Symlinks,
+  Identifier,
+  Version
+};

@@ -3,13 +3,13 @@ import {JobFacets} from "./facets/JobFacets";
 /**
  * @class
  */
-class Job{
+class Job {
   /**
    * @param {string} namespace
    * @param {string} name
    * @param {JobFacets | null | {}} facets
    */
-  constructor(namespace, name, facets ) {
+  constructor(namespace, name, facets) {
 	this.namespace = namespace;
 	this.name = name;
 	this.facets = facets;
@@ -41,8 +41,6 @@ class JobBuilder {
 	this.name = name;
 	return this;
   }
-
-
 
   /**
    * @param {JobFacets} facets

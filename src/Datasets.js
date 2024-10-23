@@ -11,9 +11,10 @@ class Dataset {
    * @param {DatasetFacets | {}} facets
    */
   constructor(name, namespace, facets = {}) {
-    this.name = name;
-    this.namespace = namespace;
-    this.facets = facets;
+	this.name = name;
+	this.namespace = namespace;
+	this.facets = facets;
   }
 }
+
 export {Dataset};

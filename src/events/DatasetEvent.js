@@ -5,7 +5,7 @@ import {BaseEvent} from "./BaseEvent";
 /**
  * @class
  */
-class DatasetEvent extends BaseEvent{
+class DatasetEvent extends BaseEvent {
   /**
    * @param {string} eventTime
    * @param {string} producer
@@ -44,12 +44,14 @@ class DatasetEventBuilder {
    * @returns {DatasetEvent}
    */
   build() {
-	if(!this.dataset) {
+	if (!this.dataset) {
 	  throw new Error('DatasetEvent requires "dataset" to be set');
 	}
-	let event = new DatasetEvent(this.eventTime, this.producer, this.schemaURL, this.dataset);
+	let event = new DatasetEvent(this.eventTime, this.producer, this.schemaURL,
+		this.dataset);
 	validateEvent(event);
 	return event;
   }
 }
+
 export {DatasetEvent, DatasetEventBuilder};
