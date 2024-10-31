@@ -6,15 +6,18 @@ class HttpConfig extends Config {
   /**
    * @param {string} url
    * @param {object} options
+   * @param {string | null} token
    */
-  constructor(url, options = {}) {
+  //TODO: maybe just maybe the token should be a part of the options object
+  constructor(url, options = {}, token = null) {
 	super();
 	this.url = url;
 	this.options = {
 	  method: 'POST',
 	  headers: {
 		'Content-Type': 'application/json',
-		'Accept': 'application/json'
+		'Accept': 'application/json',
+		...(token && { 'Authorization': `Bearer ${token}` })
 	  },
 	  ...options,
 	};

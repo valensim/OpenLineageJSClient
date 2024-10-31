@@ -7,6 +7,8 @@ This project is supposed to offer a similar functionality as the Python and Java
 - [x] Event creation and serialization
 - [x] ConsoleTransport
 - [x] HTTPTransport
+- [ ] File Config
+- [ ] CI/CD 
 
 ## Installation
 To install the project dependencies, run:  `npm install`
