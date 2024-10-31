@@ -1,4 +1,4 @@
-const { DatasetFacets } = require('./facets/DatasetFacets');
+import {DatasetFacets} from "./facets/DatasetFacets";
 
 /**
  * @class
@@ -11,15 +11,10 @@ class Dataset {
    * @param {DatasetFacets | {}} facets
    */
   constructor(name, namespace, facets = {}) {
-    this.name = name;
-    this.namespace = namespace;
-    this.facets = facets;
+	this.name = name;
+	this.namespace = namespace;
+	this.facets = facets;
   }
 }
 
-
-
-
-module.exports = {
-  Dataset,
-};
+export {Dataset};

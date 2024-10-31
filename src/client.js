@@ -1,7 +1,6 @@
-// src/client.js
-const BaseEvent = require("./events/BaseEvent");
-const { ConsoleTransport } = require("./transport/console");
-const { Transport } = require("./transport/Transport");
+import {BaseEvent} from './events/BaseEvent';
+import {ConsoleTransport} from './transport/console';
+import {Transport} from './transport/Transport';
 
 /**
  * @class
@@ -20,13 +19,13 @@ class OpenLineageClient {
   /**
    * @param {BaseEvent} event
    */
-  emit(event) {
+  async emit(event) {
 	if (!this.transport) {
 	  this.transport = new ConsoleTransport();
 	  console.log("No transport provided, defaulting to console transport");
 	}
-	this.transport.emit(event);
+	await this.transport.emit(event);
   }
 }
 
-module.exports = {OpenLineageClient};
+export {OpenLineageClient};

@@ -1,5 +1,5 @@
-const BaseEvent = require("../events/BaseEvent");
-const {Transport} = require("./Transport");
+import {BaseEvent} from "../events/BaseEvent";
+import {Transport} from "./Transport";
 
 class ConsoleTransport extends Transport {
   constructor() {
@@ -9,9 +9,9 @@ class ConsoleTransport extends Transport {
   /**
    * @param {BaseEvent} event
    */
-  emit(event) {
+  async emit(event) {
 	console.log(JSON.stringify(event, null, 2));
   }
 }
 
-module.exports = {ConsoleTransport};
+export {ConsoleTransport};

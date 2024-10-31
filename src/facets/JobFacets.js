@@ -1,8 +1,6 @@
-// TODO this is the last version how I understand everything else needs to copy this
+import {BaseFacet} from "./BaseFacet";
+import validator from "validator";
 
-const { BaseFacet } = require("./BaseFacet");
-
-// TODO make these optional I guess fuck this shit sucks they should be able to be null but the fokin schema is killing me
 class JobFacets {
   /**
    * @constructor
@@ -13,7 +11,8 @@ class JobFacets {
    * @param {Sql | null} [sql]
    * @param {JobType | null} [jobType]
    */
-  constructor(documentation, ownership, sourceCode, sourceCodeLocation,  sql, jobType) {
+  constructor(documentation, ownership, sourceCode, sourceCodeLocation, sql,
+	  jobType) {
 	this.documentation = documentation || null;
 	this.ownership = ownership || null;
 	this.sourceCode = sourceCode || null;
@@ -46,7 +45,8 @@ class JobType extends JobFacet {
    * @param {string} integration
    * @param {string} jobType
    */
-  constructor(producer, schemaURL, processingType, integration, jobType, deleted = null) {
+  constructor(producer, schemaURL, processingType, integration, jobType,
+	  deleted = null) {
 	super(producer, schemaURL, deleted);
 	this.processingType = processingType;
 	this.integration = integration;
@@ -127,9 +127,13 @@ class SourceCodeLocation extends JobFacet {
    * @param {string} tag
    * @param {string} branch
    */
-  constructor(producer, schemaURL, type, url, repoUrl, path, version, tag, branch, deleted = null) {
+  constructor(producer, schemaURL, type, url, repoUrl, path, version, tag,
+	  branch, deleted = null) {
 	super(producer, schemaURL, deleted);
 	this.type = type;
+	if (!validator.isURL(url) || !validator.isURL(repoUrl)) {
+	  throw new Error("URL and repoUrl must be valid URLs");
+	}
 	this.url = url;
 	this.repoUrl = repoUrl;
 	this.path = path;
@@ -252,7 +256,19 @@ class JobFacetsBuilder {
   }
 
   build() {
-	return new JobFacets(this._documentation, this._ownership, this._sourceCode, this._sourceCodeLocation, this._sql, this._jobType);
+	return new JobFacets(this._documentation, this._ownership, this._sourceCode,
+		this._sourceCodeLocation, this._sql, this._jobType);
   }
 }
-module.exports = {JobFacets, JobFacetsBuilder, JobType, Documentation, Sql, Ownership, SourceCode, SourceCodeLocation, Owner}
+
+export {
+  JobFacets,
+  JobFacetsBuilder,
+  JobType,
+  Documentation,
+  Sql,
+  Ownership,
+  SourceCode,
+  SourceCodeLocation,
+  Owner
+}

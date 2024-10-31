@@ -1,15 +1,15 @@
-const { JobFacets } = require("./facets/JobFacets");
+import {JobFacets} from "./facets/JobFacets";
 
 /**
  * @class
  */
-class Job{
+class Job {
   /**
    * @param {string} namespace
    * @param {string} name
    * @param {JobFacets | null | {}} facets
    */
-  constructor(namespace, name, facets ) {
+  constructor(namespace, name, facets) {
 	this.namespace = namespace;
 	this.name = name;
 	this.facets = facets;
@@ -42,8 +42,6 @@ class JobBuilder {
 	return this;
   }
 
-
-
   /**
    * @param {JobFacets} facets
    * @returns {JobBuilder}
@@ -61,4 +59,4 @@ class JobBuilder {
   }
 }
 
-module.exports = {Job, JobBuilder};
+export {Job, JobBuilder};

@@ -1,5 +1,4 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "https://openlineage.io/spec/2-0-2/OpenLineage.json",
 	"$defs": {
 		"BaseEvent": {

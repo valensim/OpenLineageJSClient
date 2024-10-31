@@ -1,12 +1,12 @@
-const { Dataset } = require("./Datasets");
-const { DatasetFacets } = require("./facets/DatasetFacets");
-const { OutputDatasetFacets } = require("./facets/OutputDatasetFacets");
+import {Dataset} from "./Datasets";
+import {DatasetFacets} from "./facets/DatasetFacets";
+import {OutputDatasetFacets} from "./facets/OutputDatasetFacets";
 
 /**
  * @class
  * @extends Dataset
  */
-class OutputDataset extends Dataset{
+class OutputDataset extends Dataset {
   /**
    *
    * @param {string} name
@@ -20,14 +20,12 @@ class OutputDataset extends Dataset{
   }
 }
 
-
-
 class OutputDatasetBuilder {
-  constructor() {
-	this.name = null;
-	this.namespace = null;
+  constructor(name = null, namespace = null) {
+	this.name = name;
+	this.namespace = namespace;
 	this.facets = {};
-	this.outputFacets = {};
+	this.inputFacets = {};
   }
 
   /**
@@ -71,8 +69,9 @@ class OutputDatasetBuilder {
 	if (!this.name || !this.namespace) {
 	  throw new Error('Name and Namespace are required');
 	}
-	return new OutputDataset(this.name, this.namespace, this.facets, this.outputFacets);
+	return new OutputDataset(this.name, this.namespace, this.facets,
+		this.outputFacets);
   }
 }
 
-module.exports = {OutputDatasetBuilder, OutputDataset};
+export {OutputDatasetBuilder, OutputDataset};

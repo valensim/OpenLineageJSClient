@@ -1,15 +1,17 @@
-const {getDummyRunEvent, getDummyJobEvent, getDummyDatasetEvent} = require("./DummyEvent");
+import {generateDummyRunEvent, generateDummyJobEvent, generateDummyDatasetEvent, generateNewJob} from "./DummyEvent"
+import {EventType} from "../src/types";
 
 describe('Event Creation', () => {
   it('should comply with the OpenLineage schema', async () => {
 
-	const runEvent = getDummyRunEvent();
+	const job = generateNewJob('Event Creation', 'Tests');
+	const runEvent = generateDummyRunEvent(EventType.COMPLETE, job);
 	expect(runEvent).toBeDefined();
 
-	const jobEvent = getDummyJobEvent();
+	const jobEvent = generateDummyJobEvent("Event Creation", "Tests");
 	expect(jobEvent).toBeDefined();
 
-	const datasetEvent = getDummyDatasetEvent();
+	const datasetEvent = generateDummyDatasetEvent();
 	expect(datasetEvent).toBeDefined();
   });
 });

@@ -1,17 +1,17 @@
-const { RunFacets } = require("./facets/RunFacets");
+import {RunFacets} from "./facets/RunFacets";
 
 /**
  * @class
  */
-class Run{
+class Run {
   /**
    *
    * @param {string} runId
    * @param {{}} facets
    */
   constructor(runId, facets = {}) {
-		this.runId = runId;
-		this.facets = facets;
+	this.runId = runId;
+	this.facets = facets;
   }
 }
 
@@ -48,4 +48,4 @@ class RunBuilder {
   }
 }
 
-module.exports = {Run, RunBuilder};
+export {Run, RunBuilder};

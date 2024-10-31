@@ -1,19 +1,16 @@
-const {ConsoleTransport} = require('../src/transport/console');
-const {BaseEvent} = require('../src/events/BaseEvent');
-const {RunEventBuilder} = require("../src/events/RunEvent");
-const {EventType} = require("../src/types");
-const {getDummyRunEvent} = require("./DummyEvent");
+import {ConsoleTransport} from '../src/transport/console';
+import {generateDummyJobEvent} from "./DummyEvent";
 
 describe('ConsoleTransport', () => {
   it('should emit an event to the console', async () => {
 
-	const event = getDummyRunEvent();
+	const event = generateDummyJobEvent("Event Creation", "Tests");
 	const consoleTransport = new ConsoleTransport();
 
 	const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {
 	});
 
-	consoleTransport.emit(event);
+	await consoleTransport.emit(event);
 
 	expect(consoleSpy).toHaveBeenCalledWith(JSON.stringify(event, null, 2));
 

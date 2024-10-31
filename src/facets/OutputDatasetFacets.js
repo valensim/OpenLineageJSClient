@@ -1,4 +1,4 @@
-const {BaseFacet} = require("./BaseFacet");
+import {BaseFacet} from "./BaseFacet";
 
 class OutputDatasetFacets {
   /**
@@ -10,8 +10,7 @@ class OutputDatasetFacets {
   }
 }
 
-
-class OutputStatistics extends BaseFacet{
+class OutputStatistics extends BaseFacet {
   /**
    * @param {string} producer
    * @param {string} schemaURL
@@ -34,4 +33,4 @@ class OutputStatistics extends BaseFacet{
   }
 }
 
-module.exports = {OutputDatasetFacets, OutputStatistics};
+export {OutputDatasetFacets, OutputStatistics};

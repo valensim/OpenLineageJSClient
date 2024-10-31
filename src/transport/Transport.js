@@ -1,4 +1,4 @@
-const BaseEvent = require("../events/BaseEvent");
+import {BaseEvent} from "../events/BaseEvent";
 
 /**
  * @class Transport
@@ -10,9 +10,22 @@ class Transport {
   /**
    * @param {BaseEvent} event
    */
-  emit(event) {
+  async emit(event) {
 	throw new Error("Transport.emit must be overridden");
+  }
+
+}
+
+/**
+ * @class Config
+ */
+class Config {
+  constructor() {
+  }
+
+  fromFile() {
+	throw new Error("Config.fromFile must be overridden");
   }
 }
 
-module.exports = {Transport};
+export {Transport, Config};

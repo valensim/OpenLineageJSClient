@@ -1,20 +1,20 @@
-const { InputDataset } = require("../InputDataset");
-const Job = require("../Job");
-const { OutputDataset } = require("../OutputDataset");
-const BaseEvent = require("./BaseEvent");
-const {validateEvent, removeEmptyFields} = require("../utils/Utils");
+import {InputDataset} from "../InputDataset";
+import {Job} from "../Job";
+import {OutputDataset} from "../OutputDataset";
+import {BaseEvent} from "./BaseEvent";
+import {validateEvent, removeEmptyFields} from "../utils/Utils";
 
 /**
  * @class
  */
-class JobEvent extends BaseEvent{
+class JobEvent extends BaseEvent {
   /**
    * @param {string} eventTime
    * @param {string} producer
    * @param {string} schemaURL
    * @param {Job} job
-   * @param {InputDataset[]} inputs
-   * @param {OutputDataset[]} outputs
+   * @param {InputDataset[] | OutputDataset[]} inputs
+   * @param {InputDataset[] | OutputDataset[]} outputs
    */
   constructor(eventTime, producer, schemaURL, job, inputs, outputs) {
 	super(eventTime, producer, schemaURL);
@@ -47,7 +47,7 @@ class JobEventBuilder {
   }
 
   /**
-   * @param {InputDataset[]} inputs
+   * @param {InputDataset[] | OutputDataset[]} inputs
    * @returns {JobEventBuilder}
    */
   setInputs(inputs) {
@@ -56,7 +56,7 @@ class JobEventBuilder {
   }
 
   /**
-   * @param {OutputDataset[]} outputs
+   * @param {InputDataset[] | OutputDataset[]} outputs
    * @returns {JobEventBuilder}
    */
   setOutputs(outputs) {
@@ -66,13 +66,16 @@ class JobEventBuilder {
 
   build() {
 	if (!this.job || !this.inputs || !this.outputs) {
-	  throw new Error('Job, "inputs" and "outputs" are required fields for JobEvent');
+	  throw new Error(
+		  'Job, "inputs" and "outputs" are required fields for JobEvent');
 	}
-	let event = new JobEvent(this.eventTime, this.producer, this.schemaURL, this.job, this.inputs, this.outputs);
+	let event = new JobEvent(this.eventTime, this.producer, this.schemaURL,
+		this.job, this.inputs, this.outputs);
 	let validation = validateEvent(event);
 	if (validation) {
 	  return event;
 	}
   }
 }
-module.exports = {JobEvent, JobEventBuilder};
+
+export {JobEvent, JobEventBuilder};

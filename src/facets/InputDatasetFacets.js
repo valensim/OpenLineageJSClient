@@ -1,4 +1,4 @@
-const {BaseFacet} = require("./BaseFacet");
+import {BaseFacet} from "./BaseFacet";
 
 class InputDatasetFacets {
 
@@ -79,4 +79,4 @@ class ColumnMetrics {
 
 }
 
-module.exports = {InputDatasetFacets, DataQualityMetrics, ColumnMetrics};
+export {InputDatasetFacets, DataQualityMetrics, ColumnMetrics};
