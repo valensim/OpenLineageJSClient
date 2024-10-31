@@ -1,0 +1,5 @@
+transport:
+    type: http
+    host: localhost
+    port: 8080
+    path: /api/v1/lineage

@@ -22,10 +22,6 @@ class HttpConfig extends Config {
 	  ...options,
 	};
   }
-
-  fromFile() {
-	throw new Error("Config.fromFile must be overridden");
-  }
 }
 
 class HttpTransport extends Transport {

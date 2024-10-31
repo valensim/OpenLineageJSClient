@@ -35,12 +35,19 @@ const FieldTransformationType = Object.freeze({
   MASKED: 'MASKED',
 });
 
+
 /**
- * @typedef {Object} LineageEvent
- * @property {string} eventType
- * @property {string} eventTime
- * @property {Dataset[]} inputs
- * @property {Dataset[]} outputs
+ * @typedef {Object} YamlTransport
+ * @property {string} type
+ * @property {string} url
+ * @property {string} path
+ * @property {number} port
  */
+
+/**
+ * @typedef {Object} YamlConfig
+ * @property {YamlTransport} transport
+ */
+
 
 export {EventType, TransformationType, FieldTransformationType};
