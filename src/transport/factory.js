@@ -9,6 +9,7 @@ import {Transport} from "./Transport";
  */
 function getTransportFromFile() {
   try {
+	//TODO: add validation and rename to openlineage.yaml to match the spec
 	const fileContents = fs.readFileSync('config.yaml', 'utf8');
 
 	/** @type {import("../types").YamlConfig} */

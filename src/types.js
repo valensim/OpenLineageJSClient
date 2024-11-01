@@ -40,8 +40,6 @@ const FieldTransformationType = Object.freeze({
  * @typedef {Object} YamlTransport
  * @property {string} type
  * @property {string} url
- * @property {string} path
- * @property {number} port
  */
 
 /**
