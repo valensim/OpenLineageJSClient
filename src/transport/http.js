@@ -1,3 +1,4 @@
+import validator from "validator";
 import {BaseEvent} from "../events/BaseEvent";
 import {Transport, Config} from "./Transport";
 import axios from 'axios';
@@ -8,20 +9,46 @@ class HttpConfig extends Config {
    * @param {object} options
    * @param {string | null} token
    */
-  //TODO: maybe just maybe the token should be a part of the options object
   constructor(url, options = {}, token = null) {
 	super();
+	validateUrlAndToken(url, token);
 	this.url = url;
 	this.options = {
 	  method: 'POST',
 	  headers: {
 		'Content-Type': 'application/json',
 		'Accept': 'application/json',
-		...(token && { 'Authorization': `Bearer ${token}` })
+		...(token && {'Authorization': `Bearer ${token}`})
 	  },
 	  ...options,
 	};
   }
+}
+
+/**
+ * @param {string} url
+ * @param {string | null} token
+ */
+function validateUrlAndToken(url, token = null) {
+  if (!validator.isURL(url, {require_host: false, require_tld: false})) {
+	throw new Error("Invalid URL");
+  }
+  if (token && !validator.isJWT(token)) {
+	throw new Error("Invalid token");
+  }
+}
+
+/**
+ * @returns {HttpTransport}
+ */
+function httpTransportFromFile(config) {
+  if (!config.url) {
+	throw new Error("Missing URL in config");
+  }
+  validateUrlAndToken(config.url, config.token);
+  //what really are available options? -> turns out there can be a lot of shit soo probably no reason to try to check for all of it
+  return new HttpTransport(
+	  new HttpConfig(config.url, config.options, config.token));
 }
 
 class HttpTransport extends Transport {
@@ -56,4 +83,4 @@ class HttpTransport extends Transport {
   }
 }
 
-export {HttpTransport, HttpConfig};
+export {HttpTransport, HttpConfig, httpTransportFromFile};

@@ -16,9 +16,6 @@ class OpenLineageClient {
 	this.transport = transport;
 	if (!this.transport) {
 	  this.transport = getTransportFromFile();
-	  if (!this.transport) {
-		throw("No transport provided, and no transport found in config file");
-	  }
 	}
 	return this;
   }
