@@ -9,7 +9,7 @@ describe('ConfigFile', () => {
 
 	const consoleConfig = 'transport:\n  type: console';
 	const httpConfig = 'transport:\n  type: http\n  url: http://localhost:8080/api/v1/lineage';
-	const filePath = path.join(__dirname, '../config.yaml');
+	const filePath = path.join(__dirname, '../openlineage.yaml');
 	let contents = ''
 
 	if (fs.existsSync(filePath)) {
