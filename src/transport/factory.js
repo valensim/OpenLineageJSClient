@@ -1,6 +1,6 @@
 import fs from "fs";
 import yaml from "js-yaml";
-import {HttpConfig, HttpTransport, httpTransportFromFile} from "./http";
+import {httpTransportFromFile} from "./http";
 import {ConsoleTransport} from "./console";
 import {Transport} from "./Transport";
 

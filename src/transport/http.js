@@ -39,6 +39,7 @@ function validateUrlAndToken(url, token = null) {
 }
 
 /**
+ * @param {HttpConfig} config
  * @returns {HttpTransport}
  */
 function httpTransportFromFile(config) {
