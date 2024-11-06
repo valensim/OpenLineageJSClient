@@ -14,8 +14,8 @@ class Transport {
   }
 }
 
-class Config {
+class TransportConfig {
   constructor() {}
 }
 
-export { Transport, Config };
+export { Transport, TransportConfig };

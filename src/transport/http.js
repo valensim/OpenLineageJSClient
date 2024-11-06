@@ -1,9 +1,9 @@
 import validator from "validator";
 import {BaseEvent} from "../events/BaseEvent";
-import {Transport, Config} from "./Transport";
+import {Transport, TransportConfig} from "./Transport";
 import axios from 'axios';
 
-class HttpConfig extends Config {
+class HttpConfig extends TransportConfig {
   /**
    * @param {string} url
    * @param {object} options
@@ -45,7 +45,6 @@ function httpTransportFromFile(config) {
   if (!config.url) {
 	throw new Error("Missing URL in config");
   }
-  validateUrlAndToken(config.url, config.token);
   //what really are available options? -> turns out there can be a lot of shit soo probably no reason to try to check for all of it
   return new HttpTransport(
 	  new HttpConfig(config.url, config.options, config.token));

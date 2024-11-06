@@ -17,7 +17,6 @@ class OpenLineageClient {
 	if (!this.transport) {
 	  this.transport = getTransportFromFile();
 	}
-	return this;
   }
 
   /**
