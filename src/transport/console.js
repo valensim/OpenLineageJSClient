@@ -1,5 +1,5 @@
-import {BaseEvent} from "../events/BaseEvent";
-import {Transport} from "./Transport";
+import {BaseEvent} from "../events/base-event";
+import {Transport} from "./transport";
 
 class ConsoleTransport extends Transport {
   constructor() {

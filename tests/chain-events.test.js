@@ -1,13 +1,13 @@
 import {HttpTransport, HttpConfig} from "../src/transport/http";
 import {EventType} from "../src/types";
 import {OpenLineageClient} from "../src/client";
-import {InputDatasetBuilder} from "../src/InputDataset";
-import {OutputDatasetBuilder} from "../src/OutputDataset";
-import {JobBuilder} from "../src/Job";
-import {RunBuilder} from "../src/Run";
+import {InputDatasetBuilder} from "../src/input-dataset";
+import {OutputDatasetBuilder} from "../src/output-dataset";
+import {JobBuilder} from "../src/job";
+import {RunBuilder} from "../src/run";
 import {v4 as uuidv4} from 'uuid';
-import {RunEventBuilder} from "../src/events/RunEvent";
-import {JobFacetsBuilder, JobType} from "../src/facets/JobFacets";
+import {RunEventBuilder} from "../src/events/run-event";
+import {JobFacetsBuilder, JobType} from "../src/facets/job-facets";
 
 describe('HttpTransport', () => {
   it('should shoot a run event at Marquez', async () => {

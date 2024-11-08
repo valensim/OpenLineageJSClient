@@ -1,6 +1,6 @@
-import {BaseEvent} from './events/BaseEvent';
+import {BaseEvent} from './events/base-event';
 import {ConsoleTransport} from './transport/console';
-import {Transport} from './transport/Transport';
+import {Transport} from './transport/transport';
 import {getTransportFromFile} from "./transport/factory";
 
 /**

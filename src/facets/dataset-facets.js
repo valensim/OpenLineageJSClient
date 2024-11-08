@@ -1,5 +1,5 @@
-import {BaseFacet} from "./BaseFacet";
-import {Ownership} from "./JobFacets";
+import {BaseFacet} from "./base-facet";
+import {Ownership} from "./job-facets";
 import {TransformationType, FieldTransformationType} from "../types";
 import validator from 'validator';
 

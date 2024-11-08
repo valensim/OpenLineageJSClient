@@ -1,4 +1,4 @@
-import {generateDummyRunEvent, generateDummyJobEvent, generateDummyDatasetEvent, generateNewJob} from "./DummyEvent"
+import {generateDummyRunEvent, generateDummyJobEvent, generateDummyDatasetEvent, generateNewJob} from "./dummy-event"
 import {EventType} from "../src/types";
 
 describe('Event Creation', () => {

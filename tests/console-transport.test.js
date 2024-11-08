@@ -1,5 +1,5 @@
 import {ConsoleTransport} from '../src/transport/console';
-import {generateDummyJobEvent} from "./DummyEvent";
+import {generateDummyJobEvent} from "./dummy-event";
 
 describe('ConsoleTransport', () => {
   it('should emit an event to the console', async () => {

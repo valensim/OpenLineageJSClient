@@ -1,4 +1,4 @@
-import {JobFacets} from "./facets/JobFacets";
+import {JobFacets} from "./facets/job-facets";
 
 /**
  * @class

@@ -1,4 +1,4 @@
-import {BaseEvent} from "../events/BaseEvent";
+import {BaseEvent} from "../events/base-event";
 
 /**
  * @class Transport

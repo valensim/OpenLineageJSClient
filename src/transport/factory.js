@@ -2,7 +2,7 @@ import fs from "fs";
 import yaml from "js-yaml";
 import {HttpTransport} from "./http";
 import {ConsoleTransport} from "./console";
-import {Transport} from "./Transport";
+import {Transport} from "./transport";
 
 /**
  * Loads and parses the YAML file, returning a ClientConfig object.
