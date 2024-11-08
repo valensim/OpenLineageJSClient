@@ -5,16 +5,21 @@ import {ConsoleTransport} from "./console";
 import {Transport} from "./Transport";
 
 /**
+ * Loads and parses the YAML file, returning a ClientConfig object.
+ * @returns {import("../types").ClientConfig}
+ */
+function loadClientConfig() {
+  const fileContents = fs.readFileSync('openlineage.yaml', 'utf8');
+  return /** @type {import("../types").ClientConfig} */ (yaml.load(fileContents));
+}
+
+/**
  * @returns {Transport | null}
  */
 function getTransportFromFile() {
-  //TODO: add validation and rename to openlineage.yaml to match the spec
-  const fileContents = fs.readFileSync('openlineage.yaml', 'utf8');
-
-  /** @type {import("../types").ClientConfig} */
-  const config = yaml.load(fileContents);
+  const config = loadClientConfig();
   if (!config.transport) {
-	throw new Error("No transport configuration found in config.yaml");
+	throw new Error("No transport configuration found in openlineage.yaml");
   }
   switch (config.transport.type) {
 	case "http":
@@ -27,4 +32,3 @@ function getTransportFromFile() {
 }
 
 export {getTransportFromFile};
-
