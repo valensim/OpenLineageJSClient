@@ -1,16 +1,15 @@
 import validator from "validator";
 import {BaseEvent} from "../events/BaseEvent";
-import {Transport, TransportConfig} from "./Transport";
+import {Transport} from "./Transport";
 import axios from 'axios';
 
-class HttpConfig extends TransportConfig {
+class HttpConfig {
   /**
    * @param {string} url
    * @param {object} options
    * @param {string | null} token
    */
   constructor(url, options = {}, token = null) {
-	super();
 	validateUrlAndToken(url, token);
 	this.url = url;
 	this.options = {
@@ -38,18 +37,6 @@ function validateUrlAndToken(url, token = null) {
   }
 }
 
-/**
- * @param {HttpConfig} config
- * @returns {HttpTransport}
- */
-function httpTransportFromFile(config) {
-  if (!config.url) {
-	throw new Error("Missing URL in config");
-  }
-  //what really are available options? -> turns out there can be a lot of shit soo probably no reason to try to check for all of it
-  return new HttpTransport(
-	  new HttpConfig(config.url, config.options, config.token));
-}
 
 class HttpTransport extends Transport {
   /**
@@ -81,6 +68,19 @@ class HttpTransport extends Transport {
 	  return error;
 	}
   }
+
+  /**
+   * @param {import("../types").TransportConfig} config
+   * @returns {HttpTransport}
+   */
+  static fromFile(config) {
+	if (!config.url) {
+	  throw new Error("Missing URL in config");
+	}
+	return new HttpTransport(
+		new HttpConfig(config.url, config.options, config.token)
+	);
+  }
 }
 
-export {HttpTransport, HttpConfig, httpTransportFromFile};
+export {HttpTransport, HttpConfig};

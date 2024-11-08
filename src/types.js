@@ -37,14 +37,16 @@ const FieldTransformationType = Object.freeze({
 
 
 /**
- * @typedef {Object} YamlTransport
+ * @typedef {Object} TransportConfig
  * @property {string} type
  * @property {string} url
+ * @property {object} options
+ * @property {string | null} token
  */
 
 /**
- * @typedef {Object} YamlConfig
- * @property {YamlTransport} transport
+ * @typedef {Object} ClientConfig
+ * @property {TransportConfig} transport
  */
 
 

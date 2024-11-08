@@ -14,8 +14,9 @@ class Transport {
   }
 }
 
-class TransportConfig {
-  constructor() {}
-}
+// // TODO: should this even exist? I don't believe that it needs to given there are no needed methods
+// class TransportConfig {
+//   constructor() {}
+// }
 
-export { Transport, TransportConfig };
+export { Transport};

@@ -1,6 +1,6 @@
 import fs from "fs";
 import yaml from "js-yaml";
-import {httpTransportFromFile} from "./http";
+import {HttpTransport} from "./http";
 import {ConsoleTransport} from "./console";
 import {Transport} from "./Transport";
 
@@ -11,14 +11,14 @@ function getTransportFromFile() {
   //TODO: add validation and rename to openlineage.yaml to match the spec
   const fileContents = fs.readFileSync('openlineage.yaml', 'utf8');
 
-  /** @type {import("../types").YamlConfig} */
+  /** @type {import("../types").ClientConfig} */
   const config = yaml.load(fileContents);
   if (!config.transport) {
 	throw new Error("No transport configuration found in config.yaml");
   }
   switch (config.transport.type) {
 	case "http":
-	  return httpTransportFromFile(config.transport);
+	  return HttpTransport.fromFile(config.transport);
 	case "console":
 	  return new ConsoleTransport();
 	default:
