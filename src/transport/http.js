@@ -1,29 +1,42 @@
-import {BaseEvent} from "../events/BaseEvent";
-import {Transport, Config} from "./Transport";
+import validator from "validator";
+import {BaseEvent} from "../events/base-event";
+import {Transport} from "./transport";
 import axios from 'axios';
 
-class HttpConfig extends Config {
+class HttpConfig {
   /**
    * @param {string} url
    * @param {object} options
+   * @param {string | null} token
    */
-  constructor(url, options = {}) {
-	super();
+  constructor(url, options = {}, token = null) {
+	validateUrlAndToken(url, token);
 	this.url = url;
 	this.options = {
 	  method: 'POST',
 	  headers: {
 		'Content-Type': 'application/json',
-		'Accept': 'application/json'
+		'Accept': 'application/json',
+		...(token && {'Authorization': `Bearer ${token}`})
 	  },
 	  ...options,
 	};
   }
+}
 
-  fromFile() {
-	throw new Error("Config.fromFile must be overridden");
+/**
+ * @param {string} url
+ * @param {string | null} token
+ */
+function validateUrlAndToken(url, token = null) {
+  if (!validator.isURL(url, {require_host: false, require_tld: false})) {
+	throw new Error("Invalid URL");
+  }
+  if (token && !validator.isJWT(token)) {
+	throw new Error("Invalid token");
   }
 }
+
 
 class HttpTransport extends Transport {
   /**
@@ -54,6 +67,19 @@ class HttpTransport extends Transport {
 	  console.error(error);
 	  return error;
 	}
+  }
+
+  /**
+   * @param {import("../types").TransportConfig} config
+   * @returns {HttpTransport}
+   */
+  static fromFile(config) {
+	if (!config.url) {
+	  throw new Error("Missing URL in config");
+	}
+	return new HttpTransport(
+		new HttpConfig(config.url, config.options, config.token)
+	);
   }
 }
 

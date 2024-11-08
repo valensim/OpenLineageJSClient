@@ -1,26 +1,26 @@
-import {Dataset} from "./Datasets";
-import {DatasetFacets} from "./facets/DatasetFacets";
-import {OutputDatasetFacets} from "./facets/OutputDatasetFacets";
+import {Dataset} from "./dataset";
+import {DatasetFacets} from "./facets/dataset-facets";
+import {InputDatasetFacets} from "./facets/input-dataset-facets";
 
 /**
  * @class
  * @extends Dataset
  */
-class OutputDataset extends Dataset {
+class InputDataset extends Dataset {
   /**
    *
    * @param {string} name
    * @param {string} namespace
    * @param {DatasetFacets | {}} facets
-   * @param {OutputDatasetFacets | {}} outputFacets
+   * @param {InputDatasetFacets | {}} inputFacets
    */
-  constructor(name, namespace, facets = {}, outputFacets = {}) {
+  constructor(name, namespace, facets = {}, inputFacets = {}) {
 	super(name, namespace, facets);
-	this.outputFacets = outputFacets;
+	this.inputFacets = inputFacets;
   }
 }
 
-class OutputDatasetBuilder {
+class InputDatasetBuilder {
   constructor(name = null, namespace = null) {
 	this.name = name;
 	this.namespace = namespace;
@@ -29,9 +29,8 @@ class OutputDatasetBuilder {
   }
 
   /**
-   *
    * @param {string} name
-   * @returns {OutputDatasetBuilder}
+   * @returns {InputDatasetBuilder}
    */
   setName(name) {
 	this.name = name;
@@ -40,7 +39,7 @@ class OutputDatasetBuilder {
 
   /**
    * @param {string} namespace
-   * @returns {OutputDatasetBuilder}
+   * @returns {InputDatasetBuilder}
    */
   setNamespace(namespace) {
 	this.namespace = namespace;
@@ -49,7 +48,7 @@ class OutputDatasetBuilder {
 
   /**
    * @param {DatasetFacets} facets
-   * @returns {OutputDatasetBuilder}
+   * @returns {InputDatasetBuilder}
    */
   setFacets(facets) {
 	this.facets = facets;
@@ -57,11 +56,11 @@ class OutputDatasetBuilder {
   }
 
   /**
-   * @param {OutputDatasetFacets} facets
-   * @returns {OutputDatasetBuilder}
+   * @param {InputDatasetFacets} facets
+   * @returns {InputDatasetBuilder}
    */
-  setOutputFacet(facets) {
-	this.outputFacets = facets;
+  setInputFacets(facets) {
+	this.inputFacets = facets;
 	return this;
   }
 
@@ -69,9 +68,9 @@ class OutputDatasetBuilder {
 	if (!this.name || !this.namespace) {
 	  throw new Error('Name and Namespace are required');
 	}
-	return new OutputDataset(this.name, this.namespace, this.facets,
-		this.outputFacets);
+	return new InputDataset(this.name, this.namespace, this.facets,
+		this.inputFacets);
   }
 }
 
-export {OutputDatasetBuilder, OutputDataset};
+export {InputDataset, InputDatasetBuilder};

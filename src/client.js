@@ -1,6 +1,7 @@
-import {BaseEvent} from './events/BaseEvent';
+import {BaseEvent} from './events/base-event';
 import {ConsoleTransport} from './transport/console';
-import {Transport} from './transport/Transport';
+import {Transport} from './transport/transport';
+import {getTransportFromFile} from "./transport/factory";
 
 /**
  * @class
@@ -10,10 +11,12 @@ class OpenLineageClient {
    * @param {string | null} url
    * @param {Transport | null} transport
    */
-  constructor(url, transport) {
+  constructor(url, transport = null) {
 	this.url = url;
 	this.transport = transport;
-	return this;
+	if (!this.transport) {
+	  this.transport = getTransportFromFile();
+	}
   }
 
   /**

@@ -1,4 +1,4 @@
-import { generateDummyRunEvent, generateNewJob } from "./DummyEvent";
+import { generateDummyRunEvent, generateNewJob } from "./dummy-event";
 import { HttpTransport, HttpConfig } from "../src/transport/http";
 import { EventType } from "../src/types";
 import { OpenLineageClient } from "../src/client";

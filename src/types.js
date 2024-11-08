@@ -1,7 +1,7 @@
 // @ts-nocheck
 // src/types.js
 
-import {Dataset} from "./Datasets";
+import {Dataset} from "./dataset";
 
 /**
  * Enum for the event types in OpenLineage.
@@ -35,12 +35,20 @@ const FieldTransformationType = Object.freeze({
   MASKED: 'MASKED',
 });
 
+
 /**
- * @typedef {Object} LineageEvent
- * @property {string} eventType
- * @property {string} eventTime
- * @property {Dataset[]} inputs
- * @property {Dataset[]} outputs
+ * @typedef {Object} TransportConfig
+ * @property {string} type
+ * @property {string} url
+ * @property {object} options
+ * @property {string | null} token
  */
+
+/**
+ * @typedef {Object} ClientConfig
+ * @property {TransportConfig} transport
+ */
+
+
 
 export {EventType, TransformationType, FieldTransformationType};

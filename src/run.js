@@ -1,4 +1,4 @@
-import {RunFacets} from "./facets/RunFacets";
+import {RunFacets} from "./facets/run-facets";
 
 /**
  * @class

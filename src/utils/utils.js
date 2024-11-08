@@ -1,7 +1,7 @@
 import {instanceToPlain} from 'class-transformer';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
-import schema from '../schemas/eventSchema.json';
+import schema from '../schemas/event-schema.json';
 
 /**
  * Removes empty fields from an object recursively.

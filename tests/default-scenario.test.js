@@ -1,4 +1,4 @@
-import {generateDummyJobEvent} from "./DummyEvent";
+import {generateDummyJobEvent} from "./dummy-event";
 import {ConsoleTransport} from '../src/transport/console';
 import {OpenLineageClient} from '../src/client';
 describe('DefaultScenario', () => {

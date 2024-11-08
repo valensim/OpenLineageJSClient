@@ -1,12 +1,12 @@
-import { RunBuilder } from "../src/Run";
-import { v4 as uuidv4 } from 'uuid';
+import {RunBuilder} from "../src/run";
+import {v4 as uuidv4} from 'uuid';
 import {
   RunFacetsBuilder,
   ErrorMessage,
   ExternalQuery,
   NominalTime
-} from "../src/facets/RunFacets";
-import { JobBuilder } from "../src/Job";
+} from "../src/facets/run-facets";
+import {JobBuilder} from "../src/job";
 import {
   JobFacetsBuilder,
   JobType,
@@ -16,7 +16,7 @@ import {
   SourceCode,
   SourceCodeLocation,
   Sql
-} from "../src/facets/JobFacets";
+} from "../src/facets/job-facets";
 import {
   Item,
   Transformation,
@@ -34,27 +34,31 @@ import {
   Symlinks,
   Identifier,
   Version
-} from "../src/facets/DatasetFacets";
-import { TransformationType, FieldTransformationType, EventType } from "../src/types";
+} from "../src/facets/dataset-facets";
+import {
+  TransformationType,
+  FieldTransformationType,
+  EventType
+} from "../src/types";
 import {
   ColumnMetrics,
   DataQualityMetrics,
   InputDatasetFacets
-} from "../src/facets/InputDatasetFacets";
-import { InputDatasetBuilder } from "../src/InputDataset";
-import { OutputDatasetBuilder } from "../src/OutputDataset";
+} from "../src/facets/input-dataset-facets";
+import {InputDatasetBuilder} from "../src/input-dataset";
+import {OutputDatasetBuilder} from "../src/output-dataset";
 import {
   OutputDatasetFacets,
   OutputStatistics
-} from "../src/facets/OutputDatasetFacets";
-import { RunEventBuilder } from "../src/events/RunEvent";
-import { JobEventBuilder } from "../src/events/JobEvent";
-import { DatasetEventBuilder } from "../src/events/DatasetEvent";
+} from "../src/facets/output-dataset-facets";
+import {RunEventBuilder} from "../src/events/run-event";
+import {JobEventBuilder} from "../src/events/job-event";
+import {DatasetEventBuilder} from "../src/events/dataset-event";
+
 const producer = 'https://example.com/producer';
 const schemaURL = 'https://example.com/schema';
 
-
-function generateNewRun(){
+function generateNewRun() {
   return new RunBuilder()
   .setRunId(uuidv4())
   .addRunFacets(new RunFacetsBuilder()
@@ -83,8 +87,10 @@ function generateNewJob(name, namespace) {
   .setSourceCode(
 	  new SourceCode(producer, schemaURL, 'javascript', 'console.log(test)'))
   .setSourceCodeLocation(
-	  new SourceCodeLocation(producer, schemaURL, 'git|svn', 'https://exampleurl.com',
-		  'https://exampleRepoUrl.com', 'path', 'version', 'tag', 'main', false))
+	  new SourceCodeLocation(producer, schemaURL, 'git|svn',
+		  'https://exampleurl.com',
+		  'https://exampleRepoUrl.com', 'path', 'version', 'tag', 'main',
+		  false))
   .setSql(new Sql(producer, schemaURL, 'SELECT', true))
   .build())
   .build();
@@ -105,7 +111,8 @@ const datasetFacets = new DatasetFacetsBuilder()
 .setColumnLineage(columnLineage)
 .setSchema(new Schema(producer, schemaURL,
 	[new SchemaDatasetFacetFields('field', 'type', 'description')]))
-.setDataSource(new DataSource(producer, schemaURL, 'source', 'https://example.com'))
+.setDataSource(
+	new DataSource(producer, schemaURL, 'source', 'https://example.com'))
 .setDataQualityAssertions(new DataQualityAssertions(producer, schemaURL,
 	[new Assertion('asserton name', true, 'assertion')]))
 .setLifecycleStateChange(
@@ -141,9 +148,6 @@ const outputDataset = new OutputDatasetBuilder()
 .setFacets(datasetFacets)
 .build();
 
-
-
-
 function generateDummyRunEvent(type, job) {
   const run = generateNewRun();
   return new RunEventBuilder(new Date().toISOString(), producer,
@@ -170,4 +174,10 @@ function generateDummyDatasetEvent() {
   .build();
 }
 
-export { generateDummyRunEvent, generateDummyDatasetEvent, generateDummyJobEvent, generateNewRun, generateNewJob};
+export {
+  generateDummyRunEvent,
+  generateDummyDatasetEvent,
+  generateDummyJobEvent,
+  generateNewRun,
+  generateNewJob
+};

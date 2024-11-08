@@ -1,4 +1,4 @@
-import {BaseFacet} from "./BaseFacet";
+import {BaseFacet} from "./base-facet";
 
 class InputDatasetFacets {
 
