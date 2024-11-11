@@ -1,0 +1,14 @@
+stages:
+  - test
+
+test:
+  stage: test
+  image: node:16
+  script:
+    - npm install
+    - npm test
+  artifacts:
+    paths:
+      - coverage/
+    reports:
+      junit: report.xml

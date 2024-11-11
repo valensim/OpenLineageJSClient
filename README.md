@@ -8,7 +8,7 @@ This project is supposed to offer a similar functionality as the Python and Java
 - [x] ConsoleTransport
 - [x] HTTPTransport
 - [x] File Config
-- [ ] CI/CD 
+- [ ] CI 
 
 ## Installation
 To install the project dependencies, run:  `npm install`

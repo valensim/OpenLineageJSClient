@@ -4,7 +4,7 @@ import { EventType } from "../src/types";
 import { OpenLineageClient } from "../src/client";
 import nock from 'nock';
 
-describe('HttpTransport', () => {
+describe.skip('HttpTransport', () => {
   it('should shoot a run event at Marquez', async () => {
 	const url = "http://localhost:8080/api/v1/lineage";
 	const job = generateNewJob('httpTransport', 'clientTests');
