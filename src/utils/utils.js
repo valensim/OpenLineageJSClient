@@ -37,7 +37,6 @@ function validateEvent(jsonObject) {
 
   const ajv = new Ajv({
 	strict: false,
-	ignoreKeywordsWithRef: true // This option is useful to ignore $schema references.
   });
   addFormats(ajv);
   const validate = ajv.compile(schema);

@@ -9,7 +9,7 @@ import {v4 as uuidv4} from 'uuid';
 import {RunEventBuilder} from "../src/events/run-event";
 import {JobFacetsBuilder, JobType} from "../src/facets/job-facets";
 
-describe('HttpTransport', () => {
+describe.skip('HttpTransport', () => {
   it('should shoot a run event at Marquez', async () => {
 	const kafka1 = new InputDatasetBuilder("kafka1", "streams").build();
 	const kafka2 = new InputDatasetBuilder("kafka2", "streams").build();
