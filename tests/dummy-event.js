@@ -38,7 +38,6 @@ import {
 import {
   TransformationType,
   FieldTransformationType,
-  EventType
 } from "../src/types";
 import {
   ColumnMetrics,

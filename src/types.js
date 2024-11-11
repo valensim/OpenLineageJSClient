@@ -1,8 +1,6 @@
 // @ts-nocheck
 // src/types.js
 
-import {Dataset} from "./dataset";
-
 /**
  * Enum for the event types in OpenLineage.
  * @readonly
