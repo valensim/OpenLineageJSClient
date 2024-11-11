@@ -21,13 +21,14 @@ class OpenLineageClient {
 
   /**
    * @param {BaseEvent} event
+   * @returns {Promise<void>}
    */
   async emit(event) {
 	if (!this.transport) {
 	  this.transport = new ConsoleTransport();
 	  console.log("No transport provided, defaulting to console transport");
 	}
-	await this.transport.emit(event);
+	return await this.transport.emit(event);
   }
 }
 

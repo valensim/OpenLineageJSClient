@@ -8,9 +8,12 @@ import {RunBuilder} from "../src/run";
 import {v4 as uuidv4} from 'uuid';
 import {RunEventBuilder} from "../src/events/run-event";
 import {JobFacetsBuilder, JobType} from "../src/facets/job-facets";
+import nock from "nock";
+import dotenv from 'dotenv';
+dotenv.config();
 
-describe.skip('HttpTransport', () => {
-  it('should shoot a run event at Marquez', async () => {
+describe('chain-event', () => {
+  it('should create more complicated pipeline in Marquez', async () => {
 	const kafka1 = new InputDatasetBuilder("kafka1", "streams").build();
 	const kafka2 = new InputDatasetBuilder("kafka2", "streams").build();
 	const dynamo = new OutputDatasetBuilder("dynamo", "dynamodb").build();
@@ -36,7 +39,24 @@ describe.skip('HttpTransport', () => {
 	const url = "http://localhost:8080/api/v1/lineage";
 	const transport = new HttpTransport(new HttpConfig(url));
 	const client = new OpenLineageClient("https://example.com", transport);
-	await client.emit(firstEvent);
-	await client.emit(secondEvent);
+
+	if (process.env.MARQUEZ_UP === 'true') {
+	  let response = await client.emit(firstEvent);
+	  expect(response.status).toBe(201);
+	  expect(response.statusText).toBe('Created');
+
+	  response = await client.emit(secondEvent);
+	  expect(response.status).toBe(201);
+	  expect(response.statusText).toBe('Created');
+	} else {
+	  const scope = nock('http://localhost:8080')
+	  .post('/api/v1/lineage')
+	  .times(2)
+	  .reply(201, { status: 'ok' });
+	  await client.emit(firstEvent);
+	  await client.emit(firstEvent);
+	  scope.done();
+	}
+
   });
 });

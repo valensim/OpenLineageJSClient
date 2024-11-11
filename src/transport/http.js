@@ -2,6 +2,9 @@ import validator from "validator";
 import {BaseEvent} from "../events/base-event";
 import {Transport} from "./transport";
 import axios from 'axios';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 class HttpConfig {
   /**
@@ -37,7 +40,6 @@ function validateUrlAndToken(url, token = null) {
   }
 }
 
-
 class HttpTransport extends Transport {
   /**
    * @param {HttpConfig} config
@@ -46,6 +48,18 @@ class HttpTransport extends Transport {
 	super();
 	this.url = config.url;
 	this.options = config.options;
+  }
+
+  /**
+   * @param {Object} data
+   * @returns {*&{data, url}}
+   */
+  getRequest(data) {
+	return {
+	  ...this.options,
+	  url: this.url,
+	  data: data,
+	};
   }
 
   /**
@@ -59,14 +73,11 @@ class HttpTransport extends Transport {
 	  url: this.url,
 	  data: data,
 	};
-	try {
-	  const response = await axios(config)
+	const response = await axios(config)
+	if (process.env.DEBUG === 'true') {
 	  console.debug(response)
-	  return response.data;
-	} catch (error) {
-	  console.error(error);
-	  return error;
 	}
+	return response;
   }
 
   /**
