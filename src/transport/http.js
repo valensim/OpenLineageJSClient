@@ -51,18 +51,6 @@ class HttpTransport extends Transport {
   }
 
   /**
-   * @param {Object} data
-   * @returns {*&{data, url}}
-   */
-  getRequest(data) {
-	return {
-	  ...this.options,
-	  url: this.url,
-	  data: data,
-	};
-  }
-
-  /**
    * @param {BaseEvent} event
    * @returns {Promise<any>}
    */
