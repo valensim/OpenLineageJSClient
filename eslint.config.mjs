@@ -3,11 +3,11 @@ import pluginJs from "@eslint/js";
 import jest from "eslint-plugin-jest";
 
 export default [
-  {languageOptions: {globals: {...globals.node, ...globals.jest}}},
+  { languageOptions: { globals: { ...globals.node, ...globals.jest } } },
   pluginJs.configs.recommended,
   {
 	plugins: {
-	  jest: jest
+	  jest: jest,
 	}
   },
   {
@@ -15,8 +15,7 @@ export default [
   },
   {
 	rules: {
-	  // lot of unused vars need to be ignored they are only used in the JSDoc
-	  'no-unused-vars': ['error', { 'varsIgnorePattern': '^(BaseEvent|Transport|RunFacets|OutputDatasetFacets|DatasetFacets|JobFacets|TransformationType|FieldTransformationType|EventType|Run|OutputDataset|Job|InputDataset|Dataset|InputDatasetFacets|_)$' }]
+	  'no-unused-vars': ['error', { 'varsIgnorePattern': '^[A-Z]' }],
 	}
   }
 ];
