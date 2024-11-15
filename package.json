@@ -1,5 +1,5 @@
 {
-  "name": "jsclient",
+  "name": "open-lineage-client-js",
   "version": "0.1.0",
   "main": "src/index.js",
   "scripts": {
