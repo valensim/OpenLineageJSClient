@@ -5,7 +5,6 @@ import { OpenLineageClient } from "../src/client";
 import nock from 'nock';
 import dotenv from 'dotenv';
 dotenv.config();
-import axios from 'axios';
 
 describe('HttpTransport', () => {
   it('should shoot a run event at Marquez', async () => {
