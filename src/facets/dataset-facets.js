@@ -439,7 +439,6 @@ class DatasetFacetsBuilder {
 export {
   DatasetFacetsBuilder,
   DatasetFacets,
-  Ownership,
   ColumnLineage,
   Field,
   Item,

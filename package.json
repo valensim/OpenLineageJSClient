@@ -1,7 +1,7 @@
 {
   "name": "jsclient",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.1.0",
+  "main": "src/index.js",
   "scripts": {
     "typecheck": "tsc",
     "docs": "jsdoc -c .jsdoc.json",
@@ -12,10 +12,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["OpenLineage", "Client", "Lineage"],
+  "author": "Simon Valenta",
   "license": "ISC",
-  "description": "",
+  "description": "OpenLineage Client for JavaScript",
   "devDependencies": {
     "@babel/cli": "^7.25.7",
     "@babel/core": "^7.25.2",
