@@ -5,7 +5,7 @@ import {
   ErrorMessage,
   ExternalQuery,
   NominalTime
-} from "../src/facets/run-facets";
+} from "../src/index.js";
 import {JobBuilder} from "../src/job";
 import {
   JobFacetsBuilder,
@@ -16,7 +16,7 @@ import {
   SourceCode,
   SourceCodeLocation,
   Sql
-} from "../src/facets/job-facets";
+} from "../src/index.js";
 import {
   Item,
   Transformation,
@@ -34,7 +34,7 @@ import {
   Symlinks,
   Identifier,
   Version
-} from "../src/facets/dataset-facets";
+} from "../src/index.js";
 import {
   TransformationType,
   FieldTransformationType,
@@ -43,16 +43,16 @@ import {
   ColumnMetrics,
   DataQualityMetrics,
   InputDatasetFacets
-} from "../src/facets/input-dataset-facets";
-import {InputDatasetBuilder} from "../src/input-dataset";
-import {OutputDatasetBuilder} from "../src/output-dataset";
+} from "../src/index.js";
+import {InputDatasetBuilder} from "../src/index.js";
+import {OutputDatasetBuilder} from "../src/index.js";
 import {
   OutputDatasetFacets,
   OutputStatistics
-} from "../src/facets/output-dataset-facets";
-import {RunEventBuilder} from "../src/events/run-event";
-import {JobEventBuilder} from "../src/events/job-event";
-import {DatasetEventBuilder} from "../src/events/dataset-event";
+} from "../src/index.js";
+import {RunEventBuilder} from "../src/index.js";
+import {JobEventBuilder} from "../src/index.js";
+import {DatasetEventBuilder} from "../src/index.js";
 
 const producer = 'https://example.com/producer';
 const schemaURL = 'https://example.com/schema';

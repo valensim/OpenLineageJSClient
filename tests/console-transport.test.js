@@ -1,5 +1,6 @@
-import {ConsoleTransport} from '../src/transport/console';
+import {ConsoleTransport} from '../src/index.js';
 import {generateDummyJobEvent} from "./dummy-event";
+import { jest } from '@jest/globals';
 
 describe('ConsoleTransport', () => {
   it('should emit an event to the console', async () => {

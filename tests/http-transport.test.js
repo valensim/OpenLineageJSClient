@@ -1,5 +1,5 @@
 import { generateDummyRunEvent, generateNewJob } from "./dummy-event";
-import { HttpTransport, HttpConfig } from "../src/transport/http";
+import { HttpTransport, HttpConfig } from "../src/index.js";
 import { EventType } from "../src/types";
 import { OpenLineageClient } from "../src/client";
 import nock from 'nock';

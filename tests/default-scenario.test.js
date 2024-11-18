@@ -1,6 +1,8 @@
 import {generateDummyJobEvent} from "./dummy-event";
-import {ConsoleTransport} from '../src/transport/console';
+import {ConsoleTransport} from '../src/index.js';
 import {OpenLineageClient} from '../src/client';
+import { jest } from '@jest/globals';
+
 describe('DefaultScenario', () => {
   it('Creates client sets up a transport and transports an event', async () => {
 

@@ -1,8 +1,12 @@
 import {OpenLineageClient} from "../src/client";
-import {HttpTransport} from "../src/transport/http";
+import {HttpTransport} from "../src/index.js";
 import fs from "fs";
 import path from "path";
-import {ConsoleTransport} from "../src/transport/console";
+import {ConsoleTransport} from "../src/index.js";
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 describe('ConfigFile', () => {
   it('should initialize client from config file if one is present', async () => {
