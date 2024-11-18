@@ -1,28 +1,41 @@
 {
   "name": "open-lineage-client-js",
-  "version": "0.1.1",
+  "version": "0.1.3",
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "typecheck": "tsc",
     "docs": "jsdoc -c .jsdoc.json",
-    "build": "babel src --out-dir dist",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "babel src --out-dir dist --extensions '.js'",
+    "build:cjs": "babel src --out-dir dist --extensions '.js' --out-file-extension .cjs --plugins=@babel/plugin-transform-modules-commonjs",
     "start": "node dist/index.js",
     "test": "jest",
-    "type": "module",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "keywords": ["OpenLineage", "Client", "Lineage"],
+  "keywords": [
+    "OpenLineage",
+    "Client",
+    "Lineage"
+  ],
   "author": "Simon Valenta",
   "license": "ISC",
   "description": "OpenLineage Client for JavaScript",
   "devDependencies": {
     "@babel/cli": "^7.25.7",
     "@babel/core": "^7.25.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.25.9",
     "@babel/preset-env": "^7.25.3",
     "@eslint/js": "^9.13.0",
     "@types/js-yaml": "^4.0.9",
