@@ -1,7 +1,19 @@
 import {instanceToPlain} from 'class-transformer';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
-import schema from '../schemas/event-schema.json';
+import { readFile } from 'fs/promises';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const schema = JSON.parse(
+	await readFile(
+		join(__dirname, '../schemas/event-schema.json'),
+		'utf8'
+	)
+);
 
 /**
  * Removes empty fields from an object recursively.

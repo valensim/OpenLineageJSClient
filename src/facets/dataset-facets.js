@@ -1,6 +1,6 @@
-import {BaseFacet} from "./base-facet";
-import {Ownership} from "./job-facets";
-import {TransformationType, FieldTransformationType} from "../types";
+import {BaseFacet} from "./base-facet.js";
+import {Ownership} from "./job-facets.js";
+import {TransformationType, FieldTransformationType} from "../types.js";
 import validator from 'validator';
 
 class DatasetFacets {

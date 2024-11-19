@@ -1,24 +1,38 @@
 {
-  "name": "jsclient",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "open-lineage-client-js",
+  "version": "0.2.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "typecheck": "tsc",
     "docs": "jsdoc -c .jsdoc.json",
-    "build": "babel src --out-dir dist",
+    "copy-schemas": "copyfiles -u 1 \"src/schemas/**/*\" dist",
+    "build": "babel src --out-dir dist && tsc --emitDeclarationOnly && npm run copy-schemas",
     "start": "node dist/index.js",
     "test": "jest",
-    "type": "module",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "open-lineage",
+    "open-lineage-client",
+    "open-lineage-client-js"
+  ],
+  "author": "Simon Valenta",
   "license": "ISC",
-  "description": "",
+  "description": "Js client for Open Lineage",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valensim/OpenLineageJSClient.git"
+  },
   "devDependencies": {
     "@babel/cli": "^7.25.7",
     "@babel/core": "^7.25.2",
+    "@babel/plugin-syntax-import-assertions": "^7.26.0",
     "@babel/preset-env": "^7.25.3",
     "@eslint/js": "^9.13.0",
     "@types/js-yaml": "^4.0.9",
@@ -26,6 +40,7 @@
     "@types/validator": "^13.12.2",
     "ajv": "^8.17.1",
     "axios": "^1.7.7",
+    "copyfiles": "^2.4.1",
     "eslint": "^9.13.0",
     "globals": "^15.11.0",
     "jest": "^29.7.0",

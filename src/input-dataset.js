@@ -1,6 +1,6 @@
-import {Dataset} from "./dataset";
-import {DatasetFacets} from "./facets/dataset-facets";
-import {InputDatasetFacets} from "./facets/input-dataset-facets";
+import {Dataset} from "./dataset.js";
+import {DatasetFacets} from "./facets/dataset-facets.js";
+import {InputDatasetFacets} from "./facets/input-dataset-facets.js";
 
 /**
  * @class
