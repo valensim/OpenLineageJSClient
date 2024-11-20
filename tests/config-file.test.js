@@ -1,8 +1,9 @@
 import {OpenLineageClient} from "../src/client";
-import {HttpTransport} from "../src/transport/http";
+import {HttpTransport} from "../src/index.js";
 import fs from "fs";
 import path from "path";
-import {ConsoleTransport} from "../src/transport/console";
+import {ConsoleTransport} from "../src/index.js";
+import {describe, it, expect} from "vitest";
 
 describe('ConfigFile', () => {
   it('should initialize client from config file if one is present', async () => {

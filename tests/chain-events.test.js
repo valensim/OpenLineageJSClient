@@ -10,6 +10,7 @@ import {RunEventBuilder} from "../src/index.js";
 import {JobFacetsBuilder, JobType} from "../src/index.js";
 import nock from "nock";
 import dotenv from 'dotenv';
+import {describe, it, expect} from "vitest";
 dotenv.config();
 
 describe('chain-event', () => {

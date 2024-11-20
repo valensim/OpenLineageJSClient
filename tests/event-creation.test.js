@@ -1,5 +1,6 @@
 import {generateDummyRunEvent, generateDummyJobEvent, generateDummyDatasetEvent, generateNewJob} from "./dummy-event"
 import {EventType} from "../src/types";
+import {describe, it, expect} from "vitest";
 
 describe('Event Creation', () => {
   it('should comply with the OpenLineage schema', async () => {
