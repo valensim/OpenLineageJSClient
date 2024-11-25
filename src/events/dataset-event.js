@@ -1,6 +1,6 @@
-import {Dataset} from "../dataset";
-import {validateEvent, removeEmptyFields} from "../utils/utils";
-import {BaseEvent} from "./base-event";
+import {Dataset} from "../dataset.js";
+import {validateEvent, removeEmptyFields} from "../utils/utils.js";
+import {BaseEvent} from "./base-event.js";
 
 /**
  * @class

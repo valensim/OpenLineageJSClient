@@ -1,4 +1,4 @@
-import {DatasetFacets} from "./facets/dataset-facets";
+import {DatasetFacets} from "./facets/dataset-facets.js";
 
 /**
  * @class

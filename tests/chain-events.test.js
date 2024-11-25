@@ -1,15 +1,16 @@
-import {HttpTransport, HttpConfig} from "../src/transport/http";
+import {HttpTransport, HttpConfig} from "../src/index.js";
 import {EventType} from "../src/types";
 import {OpenLineageClient} from "../src/client";
-import {InputDatasetBuilder} from "../src/input-dataset";
-import {OutputDatasetBuilder} from "../src/output-dataset";
+import {InputDatasetBuilder} from "../src/index.js";
+import {OutputDatasetBuilder} from "../src/index.js";
 import {JobBuilder} from "../src/job";
 import {RunBuilder} from "../src/run";
 import {v4 as uuidv4} from 'uuid';
-import {RunEventBuilder} from "../src/events/run-event";
-import {JobFacetsBuilder, JobType} from "../src/facets/job-facets";
+import {RunEventBuilder} from "../src/index.js";
+import {JobFacetsBuilder, JobType} from "../src/index.js";
 import nock from "nock";
 import dotenv from 'dotenv';
+import {describe, it, expect} from "vitest";
 dotenv.config();
 
 describe('chain-event', () => {

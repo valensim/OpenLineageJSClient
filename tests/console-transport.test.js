@@ -1,5 +1,6 @@
-import {ConsoleTransport} from '../src/transport/console';
+import {ConsoleTransport} from '../src/index.js';
 import {generateDummyJobEvent} from "./dummy-event";
+import {describe, it, expect, vi} from "vitest";
 
 describe('ConsoleTransport', () => {
   it('should emit an event to the console', async () => {
@@ -7,7 +8,7 @@ describe('ConsoleTransport', () => {
 	const event = generateDummyJobEvent("Event Creation", "Tests");
 	const consoleTransport = new ConsoleTransport();
 
-	const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {
+	const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {
 	});
 
 	await consoleTransport.emit(event);

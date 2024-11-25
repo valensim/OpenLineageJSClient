@@ -1,4 +1,4 @@
-import {BaseFacet} from "./base-facet";
+import {BaseFacet} from "./base-facet.js";
 
 class RunFacets {
   /**

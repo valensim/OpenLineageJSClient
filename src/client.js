@@ -1,7 +1,7 @@
-import {BaseEvent} from './events/base-event';
-import {ConsoleTransport} from './transport/console';
-import {Transport} from './transport/transport';
-import {getTransportFromFile} from "./transport/factory";
+import {BaseEvent} from './events/base-event.js';
+import {ConsoleTransport} from './transport/console.js';
+import {Transport} from './transport/transport.js';
+import {getTransportFromFile} from './transport/factory.js';
 
 /**
  * @class

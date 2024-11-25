@@ -1,8 +1,8 @@
-import {InputDataset} from "../input-dataset";
-import {Job} from "../job";
-import {OutputDataset} from "../output-dataset";
-import {BaseEvent} from "./base-event";
-import {validateEvent, removeEmptyFields} from "../utils/utils";
+import {InputDataset} from "../input-dataset.js";
+import {Job} from "../job.js";
+import {OutputDataset} from "../output-dataset.js";
+import {BaseEvent} from "./base-event.js";
+import {validateEvent, removeEmptyFields} from "../utils/utils.js";
 
 /**
  * @class
