@@ -1,7 +1,7 @@
 import {BaseFacet} from "./base-facet.js";
 import {Ownership} from "./job-facets.js";
 import {TransformationType, FieldTransformationType} from "../types.js";
-import validator from 'validator';
+import {isValidURI} from "../utils/utils.js";
 
 class DatasetFacets {
   /**
@@ -133,7 +133,7 @@ class DataSource extends DatasetFacet {
   constructor(producer, schemaURL, name, uri, deleted = null) {
 	super(producer, schemaURL, deleted);
 	this.name = name;
-	if (!validator.isURL(uri)) {
+	if (!isValidURI(uri)) {
 	  throw new Error("uri must be a valid URL");
 	}
 	this.uri = uri;

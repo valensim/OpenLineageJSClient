@@ -1,4 +1,4 @@
-import validator from 'validator';
+import {isValidURI} from "../utils/utils.js";
 
 /**
  * @class
@@ -11,7 +11,7 @@ class BaseFacet {
    * @param {string} schemaURL
    */
   constructor(producer, schemaURL) {
-	if (!validator.isURL(schemaURL) || !validator.isURL(producer)) {
+	if (!isValidURI(schemaURL) || !isValidURI(producer)) {
 	  throw new Error('Invalid URL');
 	}
 	this._producer = producer;

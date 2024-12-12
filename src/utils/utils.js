@@ -16,6 +16,16 @@ const schema = JSON.parse(
 );
 
 /**
+ * Validates a URI.
+ * @param str {string} - The URI to validate.
+ * @returns {boolean}
+ */
+function isValidURI(str) {
+  const uriRegex = /^[a-zA-Z][a-zA-Z\d+\-.]*:\/\/[^\s/$.?#].[^\s]*$/;
+  return uriRegex.test(str);
+}
+
+/**
  * Removes empty fields from an object recursively.
  * @param {Object} obj
  * @returns {Object} New object with non-empty fields
@@ -62,4 +72,4 @@ function validateEvent(jsonObject) {
 
 }
 
-export {removeEmptyFields, validateEvent};
+export {removeEmptyFields, validateEvent, isValidURI};

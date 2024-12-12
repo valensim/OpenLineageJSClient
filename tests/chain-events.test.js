@@ -21,7 +21,7 @@ describe('chain-event', () => {
 	const elastic = new OutputDatasetBuilder("elastic",
 		"elasticsearch").build();
 	const jobFacets = new JobFacetsBuilder().setJobType(
-		new JobType("http://producer.com", "http://schema.com", 'STREAMING',
+		new JobType("kafka://producer.com", "yoMama://schema.com", 'STREAMING',
 			'integration', 'job')).build();
 	const firstJob = new JobBuilder().setName("firstJob").setNamespace(
 		"primarySaving").addFacets(jobFacets).build();
