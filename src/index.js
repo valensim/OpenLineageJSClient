@@ -22,5 +22,5 @@ export {Job, JobBuilder} from './job.js';
 export {Run, RunBuilder} from './run.js';
 export {OutputDataset, OutputDatasetBuilder} from './output-dataset.js';
 export {InputDataset, InputDatasetBuilder} from './input-dataset.js';
-export {EventType, TransformationType, FieldTransformationType} from './types.js';
+export {EventType, TransformationType, FieldTransformationType, ProcessingType} from './types.js';
 

@@ -1,5 +1,6 @@
 import {BaseFacet} from "./base-facet.js";
 import validator from "validator";
+import {ProcessingType} from "../types.js";
 
 class JobFacets {
   /**
@@ -41,7 +42,7 @@ class JobType extends JobFacet {
    * @param {string} producer
    * @param {string} schemaURL
    * @param {boolean | null} deleted
-   * @param {string} processingType
+   * @param {ProcessingType} processingType
    * @param {string} integration
    * @param {string} jobType
    */

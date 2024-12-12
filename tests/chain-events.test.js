@@ -1,5 +1,5 @@
 import {HttpTransport, HttpConfig} from "../src/index.js";
-import {EventType} from "../src/types";
+import {EventType, ProcessingType} from "../src/types";
 import {OpenLineageClient} from "../src/client";
 import {InputDatasetBuilder} from "../src/index.js";
 import {OutputDatasetBuilder} from "../src/index.js";
@@ -21,7 +21,7 @@ describe('chain-event', () => {
 	const elastic = new OutputDatasetBuilder("elastic",
 		"elasticsearch").build();
 	const jobFacets = new JobFacetsBuilder().setJobType(
-		new JobType("kafka://producer.com", "yoMama://schema.com", 'STREAMING',
+		new JobType("kafka://producer.com", "yoMama://schema.com", ProcessingType.STREAMING,
 			'integration', 'job')).build();
 	const firstJob = new JobBuilder().setName("firstJob").setNamespace(
 		"primarySaving").addFacets(jobFacets).build();

@@ -15,6 +15,11 @@ const EventType = Object.freeze({
   OTHER: 'OTHER',
 });
 
+const ProcessingType = Object.freeze({
+  BATCH: 'BATCH',
+  STREAMING: 'STREAMING',
+});
+
 /**
  * @readonly
  * @enum {string}
@@ -49,4 +54,4 @@ const FieldTransformationType = Object.freeze({
 
 
 
-export {EventType, TransformationType, FieldTransformationType};
+export {EventType, TransformationType, FieldTransformationType, ProcessingType};
