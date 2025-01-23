@@ -13,7 +13,7 @@ test_js:
       - js/node_modules/
       - js/coverage/
     reports:
-        junit: js/report.xml
+      junit: js/report.xml
 
 test_ts:
   stage: test
@@ -24,3 +24,6 @@ test_ts:
   artifacts:
     paths:
       - ts/node_modules/
+      - ts/coverage/
+    reports:
+      junit: ts/report.xml
