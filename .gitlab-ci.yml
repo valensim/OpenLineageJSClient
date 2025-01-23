@@ -3,7 +3,7 @@ stages:
   - test
 
 test_js:
-  stage: install
+  stage: test
   script:
     - cd js
     - npm install
