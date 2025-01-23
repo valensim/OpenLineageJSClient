@@ -1,61 +1,26 @@
 image: node:20
 stages:
-  - install
   - test
-  - build
 
-# Install dependencies for JavaScript
-install_js:
+test_js:
   stage: install
   script:
     - cd js
     - npm install
+    - npm test
   artifacts:
     paths:
       - js/node_modules/
+      - js/coverage/
+    reports:
+        junit: js/report.xml
 
-# Install dependencies for TypeScript
-install_ts:
-  stage: install
-  script:
-    - cd ts
-    - npm install
-  artifacts:
-    paths:
-      - ts/node_modules/
-
-# Run tests for JavaScript
-test_js:
-  stage: test
-  script:
-    - cd js
-    - npm test
-  dependencies:
-    - install_js
-
-# Run tests for TypeScript
 test_ts:
   stage: test
   script:
     - cd ts
+    - npm install
     - npm test
-  dependencies:
-    - install_ts
-
-# Build JavaScript
-build_js:
-  stage: build
-  script:
-    - cd js
-    - npm run build
-  dependencies:
-    - install_js
-
-# Build TypeScript
-build_ts:
-  stage: build
-  script:
-    - cd ts
-    - npm run build
-  dependencies:
-    - install_ts
+  artifacts:
+    paths:
+      - ts/node_modules/
