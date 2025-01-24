@@ -26,5 +26,3 @@ test_ts:
     paths:
       - ts/node_modules/
       - ts/coverage/
-    reports:
-      junit: ts/junit.xml
