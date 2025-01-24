@@ -5,12 +5,10 @@ export default defineConfig({
     globals: true,
     environment: "node",
     setupFiles: ['./tests/setup.ts'],
+    reporters: ['junit', 'json', 'verbose'],
     outputFile: {
-      junit: './junit.xml'  // Specify the output location for the junit report
-    },
-    coverage: {
-      reporter: ['text', 'json', 'html'],
-      reportsDirectory: './coverage'
+      junit: '.coverage/junit-report.xml',
+      json: '.coverage/json-report.json',
     },
   },
   resolve: {
