@@ -5,13 +5,6 @@ import dotenv from 'dotenv';
 import { describe, it , expect} from 'vitest';
 import { AxiosResponse } from 'axios';
 
-// Safely try to load .env file
-try {
-  dotenv.config();
-} catch (error) {
-  console.log('No .env file found, using default mock configuration');
-}
-
 describe('HttpTransport', () => {
   it('should shoot a run event at Marquez', async () => {
 

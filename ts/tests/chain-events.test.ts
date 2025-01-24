@@ -18,13 +18,6 @@ import dotenv from 'dotenv';
 import { describe, it, expect } from 'vitest';
 import { AxiosResponse } from 'axios';
 
-// Safely try to load .env file
-try {
-  dotenv.config();
-} catch (error) {
-  console.log('No .env file found, using default mock configuration');
-}
-
 describe('chain-event', () => {
   it('should create more complicated pipeline in Marquez', async () => {
     const kafka1 = new InputDatasetBuilder().setName('kafka1').setNamespace('streams').build();
