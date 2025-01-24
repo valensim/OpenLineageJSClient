@@ -6,7 +6,7 @@ test_js:
   stage: test
   script:
     - cd js
-    - npm install
+    - npm ci
     - npm test
   artifacts:
     paths:
@@ -19,9 +19,10 @@ test_ts:
   stage: test
   script:
     - cd ts
-    - npm install
+    - npm ci
     - npm test
   artifacts:
+    when: always
     paths:
       - ts/node_modules/
       - ts/coverage/
