@@ -7,8 +7,8 @@ export default defineConfig({
     setupFiles: ['./tests/setup.ts'],
     reporters: ['junit', 'json', 'verbose'],
     outputFile: {
-      junit: '.coverage/junit-report.xml',
-      json: '.coverage/json-report.json',
+      junit: 'coverage/junit-report.xml',
+      json: 'coverage/json-report.json',
     },
   },
   resolve: {
