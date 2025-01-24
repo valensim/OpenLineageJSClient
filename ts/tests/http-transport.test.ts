@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import { describe, it , expect} from 'vitest';
 import { AxiosResponse } from 'axios';
 
-dotenv.config();
+dotenv.config({ debug: false });
 
 describe('HttpTransport', () => {
   it('should shoot a run event at Marquez', async () => {
