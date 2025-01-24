@@ -15,6 +15,8 @@
     "@types/uuid": "^10.0.0",
     "@types/validator": "^13.12.2",
     "@vitest/coverage-v8": "^3.0.3",
+    "@vitest/runner": "^3.0.3",
+    "@vitest/junit-reporter": "^3.0.3",
     "axios": "^1.6.7",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
