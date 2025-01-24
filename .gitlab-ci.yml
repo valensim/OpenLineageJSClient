@@ -20,11 +20,11 @@ test_ts:
   script:
     - cd ts
     - npm ci
-    - npm test
+    - npm test -- --reporter=junit --coverage
   artifacts:
     when: always
     paths:
       - ts/node_modules/
       - ts/coverage/
     reports:
-      junit: ts/report.xml
+      junit: ts/junit.xml
