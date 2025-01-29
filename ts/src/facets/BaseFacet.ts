@@ -1,4 +1,4 @@
-import { isValidURI } from '../utils/utils'; // Assuming this utility exists
+import { isValidURI } from '../utils/utils.js'; // Assuming this utility exists
 
 /**
  * BaseFacet class

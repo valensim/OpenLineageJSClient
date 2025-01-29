@@ -1,4 +1,4 @@
-import { BaseFacet } from "./BaseFacet";
+import { BaseFacet } from "./BaseFacet.js";
 
 /**
  * Represents the facets of an output dataset.

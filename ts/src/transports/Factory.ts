@@ -1,8 +1,8 @@
 import fs from "fs";
 import yaml from "js-yaml";
-import { HttpTransport } from "./HttpTransport";
-import { ConsoleTransport } from "./ConsoleTransport";
-import { Transport } from "./TransportInterface";
+import { HttpTransport } from "./HttpTransport.js";
+import { ConsoleTransport } from "./ConsoleTransport.js";
+import { Transport } from "./TransportInterface.js";
 
 export interface TransportConfig {
   type: string;

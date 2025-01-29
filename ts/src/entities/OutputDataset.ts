@@ -1,6 +1,6 @@
-import { Dataset } from "./Dataset";
-import { DatasetFacets } from "../facets/DatasetFacets";
-import { OutputDatasetFacets } from "../facets/OutputDatasetFacets";
+import { Dataset } from "./Dataset.js";
+import { DatasetFacets } from "../facets/DatasetFacets.js";
+import { OutputDatasetFacets } from "../facets/OutputDatasetFacets.js";
 
 /**
  * Represents an output dataset.

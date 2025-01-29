@@ -1,4 +1,4 @@
-{
+export default{
 	"type": "object",
 	"$id": "https://openlineage.io/spec/2-0-2/OpenLineage.json",
 	"$defs": {
@@ -301,4 +301,4 @@
 		}
 	},
 	"oneOf": [{ "$ref": "#/$defs/RunEvent" }, { "$ref": "#/$defs/DatasetEvent" }, { "$ref": "#/$defs/JobEvent" }]
-}
+} as const;

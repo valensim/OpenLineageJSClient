@@ -1,8 +1,8 @@
-import { Job } from '../entities/Job';
-import { JobEvent } from '../events/JobEvent';
-import { InputDataset } from '../entities/InputDataset';
-import { OutputDataset } from '../entities/OutputDataset';
-import { validateEvent } from '../utils/utils';
+import { Job } from '../entities/Job.js';
+import { JobEvent } from '../events/JobEvent.js';
+import { InputDataset } from '../entities/InputDataset.js';
+import { OutputDataset } from '../entities/OutputDataset.js';
+import { validateEvent } from '../utils/utils.js';
 
 /**
  * Builder for creating JobEvent instances.

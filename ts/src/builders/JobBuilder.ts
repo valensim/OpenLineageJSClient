@@ -1,5 +1,5 @@
-import { Job } from "../entities/Job";
-import { JobFacets } from "../facets/JobFacets";
+import { Job } from "../entities/Job.js";
+import { JobFacets } from "../facets/JobFacets.js";
 
 /**
  * Builder for creating Job instances.

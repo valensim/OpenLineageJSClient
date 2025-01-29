@@ -1,8 +1,8 @@
-import { InputDataset } from "../entities/InputDataset";
-import { Job } from "../entities/Job";
-import { OutputDataset } from "../entities/OutputDataset";
-import { BaseEvent } from "./BaseEvent";
-import {removeEmptyFields } from "../utils/utils";
+import { InputDataset } from "../entities/InputDataset.js";
+import { Job } from "../entities/Job.js";
+import { OutputDataset } from "../entities/OutputDataset.js";
+import { BaseEvent } from "./BaseEvent.js";
+import {removeEmptyFields } from "../utils/utils.js";
 
 /**
  * Represents a JobEvent.

@@ -1,5 +1,5 @@
-import { Dataset } from "../entities/Dataset";
-import { DatasetFacets } from "../facets/DatasetFacets";
+import { Dataset } from "../entities/Dataset.js";
+import { DatasetFacets } from "../facets/DatasetFacets.js";
 
 /**
  * Builder for creating Dataset instances.

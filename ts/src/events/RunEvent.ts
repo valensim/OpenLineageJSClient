@@ -1,10 +1,10 @@
-import { InputDataset } from "../entities/InputDataset";
-import { Job } from "../entities/Job";
-import { OutputDataset } from "../entities/OutputDataset";
-import { Run } from "../entities/Run";
-import { EventType } from "../types/EventTypes";
-import { BaseEvent } from "./BaseEvent";
-import {removeEmptyFields } from "../utils/utils";
+import { InputDataset } from "../entities/InputDataset.js";
+import { Job } from "../entities/Job.js";
+import { OutputDataset } from "../entities/OutputDataset.js";
+import { Run } from "../entities/Run.js";
+import { EventType } from "../types/EventTypes.js";
+import { BaseEvent } from "./BaseEvent.js";
+import {removeEmptyFields } from "../utils/utils.js";
 
 /**
  * Represents a RunEvent.

@@ -1,10 +1,10 @@
-import { Run } from '../entities/Run';
-import { Job } from '../entities/Job';
-import { RunEvent } from '../events/RunEvent';
-import { InputDataset } from '../entities/InputDataset';
-import { OutputDataset } from '../entities/OutputDataset';
-import { EventType } from '../types/EventTypes';
-import { validateEvent } from '../utils/utils';
+import { Run } from '../entities/Run.js';
+import { Job } from '../entities/Job.js';
+import { RunEvent } from '../events/RunEvent.js';
+import { InputDataset } from '../entities/InputDataset.js';
+import { OutputDataset } from '../entities/OutputDataset.js';
+import { EventType } from '../types/EventTypes.js';
+import { validateEvent } from '../utils/utils.js';
 
 /**
  * Builder for creating RunEvent instances.

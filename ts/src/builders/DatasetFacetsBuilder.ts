@@ -8,8 +8,8 @@ import {
   Storage,
   Symlinks,
   Version,
-} from '../facets/DatasetFacets';
-import {Ownership} from '../facets/JobFacets';
+} from '../facets/DatasetFacets.js';
+import {Ownership} from '../facets/JobFacets.js';
 
 
 /**

@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
+    "rootDir": "./src",
     "target": "es2020",                // Target modern JavaScript
-    "module": "es2020",                // Use ES modules
-    "moduleResolution": "node",        // Node.js-style module resolution
+    "module": "es2020",        // Change from es2020
+    "moduleResolution": "node", // Change from node
     "resolveJsonModule": true,         // Enable JSON imports
     "esModuleInterop": true,           // Compatibility with CommonJS modules
     "strict": true,                    // Enable strict type checking
     "forceConsistentCasingInFileNames": true, // Enforce consistent file casing
     "skipLibCheck": true,              // Skip type checking for node_modules
     "outDir": "./dist",                // Output directory for compiled files
-    "allowSyntheticDefaultImports": true // Allow default imports for CommonJS
+    "allowSyntheticDefaultImports": true, // Allow default imports for CommonJS
+    "declaration": true,
+    "sourceMap": true,
   },
-  "include": ["src/**/*", "tests/**/*"],             // Include all files in the src directory
-  "exclude": ["node_modules", "dist"]  // Exclude node_modules and dist
+  "include": ["src/**/*"],             // Include all files in the src directory
+  "exclude": ["node_modules", "tests", "dist"]  // Exclude node_modules and dist
 }

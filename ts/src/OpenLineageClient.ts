@@ -1,7 +1,7 @@
-import { BaseEvent } from "./events/BaseEvent";
-import { ConsoleTransport } from "./transports/ConsoleTransport";
-import { Transport } from "./transports/TransportInterface";
-import { getTransportFromFile } from "./transports/Factory";
+import { BaseEvent } from "./events/BaseEvent.js";
+import { ConsoleTransport } from "./transports/ConsoleTransport.js";
+import { Transport } from "./transports/TransportInterface.js";
+import { getTransportFromFile } from "./transports/Factory.js";
 
 /**
  * OpenLineageClient is responsible for emitting events to a specified transport.

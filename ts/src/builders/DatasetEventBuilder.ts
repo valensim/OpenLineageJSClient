@@ -1,6 +1,6 @@
-import { Dataset } from '../entities/Dataset';
-import { DatasetEvent } from '../events/DatasetEvent';
-import { validateEvent } from '../utils/utils';
+import { Dataset } from '../entities/Dataset.js';
+import { DatasetEvent } from '../events/DatasetEvent.js';
+import { validateEvent } from '../utils/utils.js';
 
 /**
  * Builder for creating DatasetEvent instances.

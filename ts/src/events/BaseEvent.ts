@@ -1,4 +1,4 @@
-import { isValidURI } from "../utils/utils";
+import { isValidURI } from "../utils/utils.js";
 
 /**
  * Base class for all events.

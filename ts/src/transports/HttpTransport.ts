@@ -1,9 +1,9 @@
 import validator from "validator";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import dotenv from "dotenv";
-import { BaseEvent } from "../events/BaseEvent";
-import { Transport } from "./TransportInterface";
-import { TransportConfig } from './Factory';
+import { BaseEvent } from "../events/BaseEvent.js";
+import { Transport } from "./TransportInterface.js";
+import { TransportConfig } from './Factory.js';
 
 dotenv.config();
 

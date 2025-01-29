@@ -1,5 +1,5 @@
-import { Transport } from './TransportInterface';
-import { BaseEvent } from '../events/BaseEvent';
+import { Transport } from './TransportInterface.js';
+import { BaseEvent } from '../events/BaseEvent.js';
 
 export class ConsoleTransport implements Transport {
 	async emit<T=void>(event: BaseEvent): Promise<T> {

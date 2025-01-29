@@ -1,7 +1,7 @@
-import { BaseFacet } from './BaseFacet';
-import { isValidURI } from '../utils/utils';
-import {Ownership} from './JobFacets';
-import {FieldTransformationType, TransformationType} from '../types/CommonTypes';
+import { BaseFacet } from './BaseFacet.js';
+import { isValidURI } from '../utils/utils.js';
+import {Ownership} from './JobFacets.js';
+import {FieldTransformationType, TransformationType} from '../types/CommonTypes.js';
 
 /**
  * Represents the facets of a dataset.

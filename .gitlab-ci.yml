@@ -6,7 +6,7 @@ test_js:
   stage: test
   script:
     - cd js
-    - npm ci
+    - npm install
     - npm test
   artifacts:
     paths:

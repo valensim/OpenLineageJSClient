@@ -1,6 +1,6 @@
-import { Dataset } from "../entities/Dataset";
-import { validateEvent, removeEmptyFields } from "../utils/utils";
-import { BaseEvent } from "./BaseEvent";
+import { Dataset } from "../entities/Dataset.js";
+import { validateEvent, removeEmptyFields } from "../utils/utils.js";
+import { BaseEvent } from "./BaseEvent.js";
 
 /**
  * Represents a DatasetEvent.

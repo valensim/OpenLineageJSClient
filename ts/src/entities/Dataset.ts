@@ -1,4 +1,4 @@
-import { DatasetFacets } from "../facets/DatasetFacets";
+import { DatasetFacets } from "../facets/DatasetFacets.js";
 
 /**
  * Represents a generic dataset.

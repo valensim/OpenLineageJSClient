@@ -1,6 +1,6 @@
-import { OutputDataset } from "../entities/OutputDataset";
-import { DatasetFacets } from "../facets/DatasetFacets";
-import { OutputDatasetFacets } from "../facets/OutputDatasetFacets";
+import { OutputDataset } from "../entities/OutputDataset.js";
+import { DatasetFacets } from "../facets/DatasetFacets.js";
+import { OutputDatasetFacets } from "../facets/OutputDatasetFacets.js";
 
 /**
  * Builder for creating OutputDataset instances.

@@ -1,4 +1,4 @@
-import { InputDatasetFacets, DataQualityMetrics, ColumnMetrics } from "../facets/InputDatasetFacets";
+import { InputDatasetFacets, DataQualityMetrics, ColumnMetrics } from "../facets/InputDatasetFacets.js";
 
 /**
  * Builder for creating InputDatasetFacets instances.

@@ -1,7 +1,7 @@
 import { instanceToPlain } from 'class-transformer';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
-import schema from '../schemas/event-schema.json'; // Using resolveJsonModule
+import schema from '../schemas/event-schema.js';
 
 /**
  * Validates whether a string is a valid URI.

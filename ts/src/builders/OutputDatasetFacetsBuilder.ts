@@ -1,4 +1,4 @@
-import { OutputDatasetFacets, OutputStatistics } from "../facets/OutputDatasetFacets";
+import { OutputDatasetFacets, OutputStatistics } from "../facets/OutputDatasetFacets.js";
 
 /**
  * Builder for creating OutputDatasetFacets instances.

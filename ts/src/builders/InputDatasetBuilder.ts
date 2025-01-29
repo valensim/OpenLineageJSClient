@@ -1,6 +1,6 @@
-import { InputDataset } from "../entities/InputDataset";
-import { DatasetFacets } from "../facets/DatasetFacets";
-import { InputDatasetFacets } from "../facets/InputDatasetFacets";
+import { InputDataset } from "../entities/InputDataset.js";
+import { DatasetFacets } from "../facets/DatasetFacets.js";
+import { InputDatasetFacets } from "../facets/InputDatasetFacets.js";
 
 /**
  * Builder for creating InputDataset instances.

@@ -1,6 +1,6 @@
-import { BaseFacet } from './BaseFacet';
+import { BaseFacet } from './BaseFacet.js';
 import validator from 'validator';
-import { ProcessingType } from '../types/CommonTypes';
+import { ProcessingType } from '../types/CommonTypes.js';
 
 
 // Owner class

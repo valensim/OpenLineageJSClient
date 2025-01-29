@@ -1,5 +1,5 @@
-import { Run } from "../entities/Run";
-import { RunFacets } from "../facets/RunFacets";
+import { Run } from "../entities/Run.js";
+import { RunFacets } from "../facets/RunFacets.js";
 
 /**
  * Builder for creating Run instances.

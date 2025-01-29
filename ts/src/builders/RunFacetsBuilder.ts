@@ -1,4 +1,4 @@
-import { RunFacets, ErrorMessage, ExternalQuery, NominalTime, Parent } from '../facets/RunFacets';
+import { RunFacets, ErrorMessage, ExternalQuery, NominalTime, Parent } from '../facets/RunFacets.js';
 
 /**
  * Builder for creating RunFacets instances.
