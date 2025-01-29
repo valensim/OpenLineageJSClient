@@ -1,4 +1,5 @@
-# Project Name
+# Open Lineage Client for Javascript
+Recently the whole project was converted to typescript but the functionality remains exactly the same.
 
 ## Overview
 This project is supposed to offer a similar functionality as the Python and Java Open Lineage [Clients](https://github.com/OpenLineage/OpenLineage/tree/main/client) so creation and transportation of the OL events.
@@ -8,7 +9,7 @@ This project is supposed to offer a similar functionality as the Python and Java
 - [x] ConsoleTransport
 - [x] HTTPTransport
 - [x] File Config
-- [x] CI 
+- [x] CI - only on gitlab
 
 ## Installation
 To install the project dependencies, run:  `npm install`
@@ -29,7 +30,7 @@ const event = new RunEventBuilder(new Date().toISOString(), producer,
 - create a new instance of the LineageClient it will have the console transport by default
 - pass your event to the `emit` method of the client
 ```javascript
-const client = new OpenLineageClient(producer, new ConsoleTransport());
+const client = new OpenLineageClient(new ConsoleTransport());
 client.emit(event);
 ``` 
 
@@ -38,7 +39,7 @@ client.emit(event);
 - pass your event to the `emit` method of the client
 ```javascript
 const transport = new HttpTransport(new HttpConfig("http://localhost:5000/api/v1/lineage"));
-const client = new OpenLineageClient("https://example.com", transport);
+const client = new OpenLineageClient(transport);
 client.emit(event);
 ```
 
@@ -53,10 +54,14 @@ transport:
 ```
 - create a new instance of the LineageClient without providing the transport it will be automatically loaded from the file if file is present
 ```javascript
-    const client = new OpenLineageClient("https://example.com");
+    const client = new OpenLineageClient();
     client.emit(event);
 ```
 
 ### Testing
 To run the tests, use the following command: `npm test`
+All the tests run via vitest
+you can switch between remote and local tests by changing the values in your .env file
+MARQUEZ_UP=false
+DEBUG=false
 

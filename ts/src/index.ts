@@ -19,7 +19,6 @@ export { JobFacetsBuilder } from './builders/JobFacetsBuilder.js';
 export { RunBuilder } from './builders/RunBuilder.js';
 export { RunEventBuilder } from './builders/RunEventBuilder.js';
 export { RunFacetsBuilder } from './builders/RunFacetsBuilder.js';
-//TODO: prepis vsechny reference na .js
 
 // Facets
 export {
