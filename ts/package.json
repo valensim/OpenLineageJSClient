@@ -14,7 +14,6 @@
 		"test": "vitest",
 		"coverage": "vitest run --coverage",
 		"build": "npm run clean && tsc",
-		"prepublish": "cp ../README.md dist/"
 	},
 	"keywords": [],
 	"author": "",
