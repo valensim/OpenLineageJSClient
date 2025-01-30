@@ -4,5 +4,5 @@ import { config } from 'dotenv'
 try {
   config()
 } catch (error) {
-  console.log('No .env file found, using default configuration')
+  console.log('No .env file found, using default configuration' + error)
 }

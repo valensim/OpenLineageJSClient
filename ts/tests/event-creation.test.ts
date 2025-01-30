@@ -5,9 +5,7 @@ import {describe, it, expect} from "vitest";
 describe('Event Creation', () => {
   it('should comply with the OpenLineage schema', async () => {
 
-		const dummy = new DummyEvent('kafka://event-creation.com', 'dynamo://test.com');
-		let facet = new DatasetFacetsBuilder().setOwnership(new Ownership("kafka://test.com", "https://github.com/MarquezProject/marquez", [])).build()
-
+	const dummy = new DummyEvent('kafka://event-creation.com', 'dynamo://test.com');
 	const job = dummy.generateNewJob('Event Creation', 'Tests');
 	const runEvent = dummy.generateDummyRunEvent(EventType.COMPLETE, job);
 	expect(runEvent).toBeDefined();

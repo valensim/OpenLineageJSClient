@@ -1,4 +1,12 @@
-import {Documentation, JobFacets, JobType, Ownership, Sql, SourceCode, SourceCodeLocation} from '../facets/JobFacets.js';
+import {
+  Documentation,
+  JobFacets,
+  JobType,
+  Ownership,
+  Sql,
+  SourceCode,
+  SourceCodeLocation,
+} from '../facets/JobFacets.js';
 
 // JobFacetsBuilder class
 export class JobFacetsBuilder {
@@ -46,7 +54,7 @@ export class JobFacetsBuilder {
       this._sourceCode,
       this._sourceCodeLocation,
       this._sql,
-      this._jobType
+      this._jobType,
     );
   }
 }

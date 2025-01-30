@@ -1,14 +1,14 @@
-import { RunFacets } from "../facets/RunFacets.js";
+import { RunFacets } from '../facets/RunFacets.js';
 
 /**
  * Represents a run.
  */
 export class Run {
-	runId: string;
-	facets: RunFacets | Record<string, unknown>;
+  runId: string;
+  facets: RunFacets | Record<string, unknown>;
 
-	constructor(runId: string, facets: RunFacets | Record<string, unknown> = {}) {
-		this.runId = runId;
-		this.facets = facets;
-	}
+  constructor(runId: string, facets: RunFacets | Record<string, unknown> = {}) {
+    this.runId = runId;
+    this.facets = facets;
+  }
 }

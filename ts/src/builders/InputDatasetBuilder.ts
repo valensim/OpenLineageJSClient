@@ -1,6 +1,6 @@
-import { InputDataset } from "../entities/InputDataset.js";
-import { DatasetFacets } from "../facets/DatasetFacets.js";
-import { InputDatasetFacets } from "../facets/InputDatasetFacets.js";
+import { InputDataset } from '../entities/InputDataset.js';
+import { DatasetFacets } from '../facets/DatasetFacets.js';
+import { InputDatasetFacets } from '../facets/InputDatasetFacets.js';
 
 /**
  * Builder for creating InputDataset instances.
@@ -33,8 +33,13 @@ export class InputDatasetBuilder {
 
   build(): InputDataset {
     if (!this.name || !this.namespace) {
-      throw new Error("Name and Namespace are required");
+      throw new Error('Name and Namespace are required');
     }
-    return new InputDataset(this.name, this.namespace, this.facets, this.inputFacets);
+    return new InputDataset(
+      this.name,
+      this.namespace,
+      this.facets,
+      this.inputFacets,
+    );
   }
 }

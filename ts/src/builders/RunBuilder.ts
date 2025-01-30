@@ -1,5 +1,5 @@
-import { Run } from "../entities/Run.js";
-import { RunFacets } from "../facets/RunFacets.js";
+import { Run } from '../entities/Run.js';
+import { RunFacets } from '../facets/RunFacets.js';
 
 /**
  * Builder for creating Run instances.
@@ -20,7 +20,7 @@ export class RunBuilder {
 
   build(): Run {
     if (!this.runId) {
-      throw new Error("Run ID is required");
+      throw new Error('Run ID is required');
     }
     return new Run(this.runId, this.facets);
   }

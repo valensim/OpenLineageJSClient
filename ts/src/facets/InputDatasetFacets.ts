@@ -1,4 +1,4 @@
-import { BaseFacet } from "./BaseFacet.js";
+import { BaseFacet } from './BaseFacet.js';
 
 /**
  * Represents the facets of an input dataset.
@@ -26,7 +26,7 @@ export class DataQualityMetrics extends BaseFacet {
     columnMetrics: Record<string, ColumnMetrics> = {},
     rowCount: number | null = null,
     bytes: number | null = null,
-    fileCount: number | null = null
+    fileCount: number | null = null,
   ) {
     super(producer, schemaURL);
     this.columnMetrics = columnMetrics;
@@ -48,7 +48,7 @@ export class DataQualityMetrics extends BaseFacet {
    * Returns the schema URL for the data quality metrics.
    */
   getSchema(): string {
-    return "https://openlineage.io/spec/facets/1-0-2/DataQualityMetricsInputDatasetFacet.json";
+    return 'https://openlineage.io/spec/facets/1-0-2/DataQualityMetricsInputDatasetFacet.json';
   }
 }
 
@@ -71,7 +71,7 @@ export class ColumnMetrics {
     count: number,
     min: number,
     max: number,
-    quantiles: Record<string, number>
+    quantiles: Record<string, number>,
   ) {
     this.nullCount = nullCount;
     this.distinctCount = distinctCount;

@@ -1,7 +1,7 @@
-import { BaseEvent } from "./events/BaseEvent.js";
-import { ConsoleTransport } from "./transports/ConsoleTransport.js";
-import { Transport } from "./transports/TransportInterface.js";
-import { getTransportFromFile } from "./transports/Factory.js";
+import { BaseEvent } from './events/BaseEvent.js';
+import { ConsoleTransport } from './transports/ConsoleTransport.js';
+import { Transport } from './transports/TransportInterface.js';
+import { getTransportFromFile } from './transports/Factory.js';
 
 /**
  * OpenLineageClient is responsible for emitting events to a specified transport.
@@ -18,7 +18,7 @@ export class OpenLineageClient {
 
     if (!this.transport) {
       this.transport = new ConsoleTransport();
-      console.log("No transport provided, defaulting to console transport");
+      console.log('No transport provided, defaulting to console transport');
     }
   }
 
@@ -30,7 +30,7 @@ export class OpenLineageClient {
   async emit<T>(event: BaseEvent): Promise<T> {
     if (!this.transport) {
       this.transport = new ConsoleTransport();
-      console.log("No transport provided, defaulting to console transport");
+      console.log('No transport provided, defaulting to console transport');
     }
     return this.transport.emit(event);
   }

@@ -1,16 +1,20 @@
 {
 	"name": "open-lineage-client",
-	"version": "1.0.5",
+	"version": "1.0.7",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"type": "module",
 	"scripts": {
-		"lint": "eslint src/**/*.ts",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"format": "prettier --write \"src/**/*.ts\"",
+		"format:check": "prettier --check \"src/**/*.ts\"",
 		"clean": "rm -rf dist",
 		"test": "vitest",
 		"coverage": "vitest run --coverage",
-		"build": "npm run clean && tsc"
+		"build": "npm run clean && tsc",
+		"prepublish": "cp ../README.md dist/"
 	},
 	"keywords": [],
 	"author": "",
@@ -21,16 +25,19 @@
 		"@types/node": "^22.10.7",
 		"@types/uuid": "^10.0.0",
 		"@types/validator": "^13.12.2",
+		"@typescript-eslint/eslint-plugin": "^8.22.0",
+		"@typescript-eslint/parser": "^8.22.0",
 		"@vitest/coverage-v8": "^3.0.4",
 		"@vitest/runner": "^3.0.3",
 		"axios": "^1.6.7",
 		"dotenv": "^16.0.0",
-		"eslint": "^9.18.0",
+		"eslint": "^9.19.0",
 		"eslint-config-prettier": "^10.0.1",
 		"eslint-plugin-prettier": "^5.2.3",
 		"nock": "^13.0.0",
 		"prettier": "^3.4.2",
 		"typescript": "^5.7.3",
+		"typescript-eslint": "^8.22.0",
 		"uuid": "^9.0.1",
 		"vitest": "^3.0.3"
 	},
@@ -42,9 +49,9 @@
 		"validator": "^13.12.0"
 	},
 	"files": [
-    "dist/*",
-		"README.md"
-  ],
+		"dist/*",
+		"dist/README.md"
+	],
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",

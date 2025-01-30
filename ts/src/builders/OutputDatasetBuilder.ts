@@ -1,6 +1,6 @@
-import { OutputDataset } from "../entities/OutputDataset.js";
-import { DatasetFacets } from "../facets/DatasetFacets.js";
-import { OutputDatasetFacets } from "../facets/OutputDatasetFacets.js";
+import { OutputDataset } from '../entities/OutputDataset.js';
+import { DatasetFacets } from '../facets/DatasetFacets.js';
+import { OutputDatasetFacets } from '../facets/OutputDatasetFacets.js';
 
 /**
  * Builder for creating OutputDataset instances.
@@ -33,8 +33,13 @@ export class OutputDatasetBuilder {
 
   build(): OutputDataset {
     if (!this.name || !this.namespace) {
-      throw new Error("Name and Namespace are required");
+      throw new Error('Name and Namespace are required');
     }
-    return new OutputDataset(this.name, this.namespace, this.facets, this.outputFacets);
+    return new OutputDataset(
+      this.name,
+      this.namespace,
+      this.facets,
+      this.outputFacets,
+    );
   }
 }

@@ -44,6 +44,7 @@ import {
   Transformation,
   TransformationType,
   Version,
+  Job,
 } from '../../src';
 
 export class DummyEvent {
@@ -166,7 +167,7 @@ export class DummyEvent {
   /**
    * Generates a RunEvent instance.
    */
-  generateDummyRunEvent(type: string, job: any) {
+  generateDummyRunEvent(type: string, job: Job) {
     const run = this.generateNewRun();
     const inputDataset = this.generateInputDataset();
     const outputDataset = this.generateOutputDataset();

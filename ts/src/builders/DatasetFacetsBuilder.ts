@@ -9,8 +9,7 @@ import {
   Symlinks,
   Version,
 } from '../facets/DatasetFacets.js';
-import {Ownership} from '../facets/JobFacets.js';
-
+import { Ownership } from '../facets/JobFacets.js';
 
 /**
  * Builder for creating DatasetFacets instances.
@@ -81,7 +80,7 @@ export class DatasetFacetsBuilder {
       this.schema,
       this.storage,
       this.symlinks,
-      this.version
+      this.version,
     );
   }
 }

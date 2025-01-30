@@ -1,4 +1,7 @@
-import { OutputDatasetFacets, OutputStatistics } from "../facets/OutputDatasetFacets.js";
+import {
+  OutputDatasetFacets,
+  OutputStatistics,
+} from '../facets/OutputDatasetFacets.js';
 
 /**
  * Builder for creating OutputDatasetFacets instances.
@@ -52,7 +55,7 @@ export class OutputStatisticsBuilder {
       this.schemaURL,
       this.rowCount,
       this.fileCount,
-      this.size
+      this.size,
     );
   }
 }

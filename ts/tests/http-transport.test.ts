@@ -1,7 +1,6 @@
 import { HttpTransport, HttpConfig, OpenLineageClient, EventType } from '../src';
 import { DummyEvent } from './test-utils/DummyEvent';
 import nock from 'nock';
-import dotenv from 'dotenv';
 import { describe, it , expect} from 'vitest';
 import { AxiosResponse } from 'axios';
 
@@ -16,7 +15,7 @@ describe('HttpTransport', () => {
     const client = new OpenLineageClient(transport);
 
     if (process.env.MARQUEZ_UP === 'true') {
-      let response = await client.emit(runEvent) as AxiosResponse<any, any>;
+      const response = await client.emit(runEvent) as AxiosResponse<any, any>;
       console.log(response);
       expect(response.status).toBe(201);
       expect(response.statusText).toBe('Created');

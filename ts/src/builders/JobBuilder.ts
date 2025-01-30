@@ -1,5 +1,5 @@
-import { Job } from "../entities/Job.js";
-import { JobFacets } from "../facets/JobFacets.js";
+import { Job } from '../entities/Job.js';
+import { JobFacets } from '../facets/JobFacets.js';
 
 /**
  * Builder for creating Job instances.
@@ -26,7 +26,7 @@ export class JobBuilder {
 
   build(): Job {
     if (!this.namespace || !this.name) {
-      throw new Error("Namespace and Job Name are required");
+      throw new Error('Namespace and Job Name are required');
     }
     return new Job(this.namespace, this.name, this.facets);
   }

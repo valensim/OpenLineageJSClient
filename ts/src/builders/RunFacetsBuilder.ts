@@ -1,4 +1,10 @@
-import { RunFacets, ErrorMessage, ExternalQuery, NominalTime, Parent } from '../facets/RunFacets.js';
+import {
+  RunFacets,
+  ErrorMessage,
+  ExternalQuery,
+  NominalTime,
+  Parent,
+} from '../facets/RunFacets.js';
 
 /**
  * Builder for creating RunFacets instances.
@@ -34,7 +40,7 @@ export class RunFacetsBuilder {
       this._errorMessage,
       this._externalQuery,
       this._nominalTime,
-      this._parent
+      this._parent,
     );
   }
 }

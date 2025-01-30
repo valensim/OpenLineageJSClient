@@ -1,5 +1,5 @@
-import { Dataset } from "../entities/Dataset.js";
-import { DatasetFacets } from "../facets/DatasetFacets.js";
+import { Dataset } from '../entities/Dataset.js';
+import { DatasetFacets } from '../facets/DatasetFacets.js';
 
 /**
  * Builder for creating Dataset instances.
@@ -46,7 +46,7 @@ export class DatasetBuilder {
    */
   build(): Dataset {
     if (!this.name || !this.namespace) {
-      throw new Error("Name and Namespace are required");
+      throw new Error('Name and Namespace are required');
     }
     return new Dataset(this.name, this.namespace, this.facets);
   }

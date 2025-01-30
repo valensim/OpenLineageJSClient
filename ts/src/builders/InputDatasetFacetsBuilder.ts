@@ -1,4 +1,8 @@
-import { InputDatasetFacets, DataQualityMetrics, ColumnMetrics } from "../facets/InputDatasetFacets.js";
+import {
+  InputDatasetFacets,
+  DataQualityMetrics,
+  ColumnMetrics,
+} from '../facets/InputDatasetFacets.js';
 
 /**
  * Builder for creating InputDatasetFacets instances.
@@ -59,7 +63,7 @@ export class DataQualityMetricsBuilder {
       this.columnMetrics,
       this.rowCount,
       this.bytes,
-      this.fileCount
+      this.fileCount,
     );
   }
 }
@@ -119,7 +123,7 @@ export class ColumnMetricsBuilder {
       this.count,
       this.min,
       this.max,
-      this.quantiles
+      this.quantiles,
     );
   }
 }

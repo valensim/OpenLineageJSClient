@@ -5,5 +5,5 @@ export enum EventType {
   COMPLETE = 'COMPLETE',
   ABORT = 'ABORT',
   FAIL = 'FAIL',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
