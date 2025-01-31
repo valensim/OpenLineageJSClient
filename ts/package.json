@@ -1,6 +1,6 @@
 {
 	"name": "open-lineage-client",
-	"version": "1.0.7",
+	"version": "1.1.1",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -15,10 +15,13 @@
 		"coverage": "vitest run --coverage",
 		"build": "npm run clean && tsc"
 	},
-	"keywords": [],
-	"author": "",
+	"author": "Simon Valenta",
 	"license": "ISC",
-	"description": "",
+	"description": "Js client for Open Lineage",
+	"repository": {
+	  "type": "git",
+	  "url": "git+https://github.com/valensim/OpenLineageJSClient.git"
+	},
 	"devDependencies": {
 		"@types/js-yaml": "^4.0.9",
 		"@types/node": "^22.10.7",
@@ -43,13 +46,11 @@
 	"dependencies": {
 		"ajv": "^8.17.1",
 		"ajv-formats": "^3.0.1",
-		"class-transformer": "^0.5.1",
 		"js-yaml": "^4.1.0",
 		"validator": "^13.12.0"
 	},
 	"files": [
-		"dist/*",
-		"dist/README.md"
+		"dist/"
 	],
 	"exports": {
 		".": {
