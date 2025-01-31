@@ -13,7 +13,7 @@
 		"clean": "rm -rf dist",
 		"test": "vitest",
 		"coverage": "vitest run --coverage",
-		"build": "npm run clean && tsc",
+		"build": "npm run clean && tsc"
 	},
 	"keywords": [],
 	"author": "",
