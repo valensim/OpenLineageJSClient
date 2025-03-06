@@ -17,3 +17,19 @@ yarn.lock
 .DS_Store
 *.swp
 
+.env
+
+# Build output
+dist/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*%
+
+coverage/
+
+*.tgz

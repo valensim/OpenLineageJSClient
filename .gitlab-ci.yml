@@ -1,14 +1,28 @@
+image: node:20
 stages:
   - test
 
-test:
+test_js:
   stage: test
-  image: node:20
   script:
+    - cd js
     - npm install
     - npm test
   artifacts:
     paths:
-      - coverage/
+      - js/node_modules/
+      - js/coverage/
     reports:
-      junit: report.xml
+      junit: js/report.xml
+
+test_ts:
+  stage: test
+  script:
+    - cd ts
+    - npm ci
+    - npm test -- --reporter=junit --coverage
+  artifacts:
+    when: always
+    paths:
+      - ts/node_modules/
+      - ts/coverage/
