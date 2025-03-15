@@ -9,7 +9,12 @@ import schema from '../schemas/event-schema.js';
  * @returns True if the URI is valid, false otherwise.
  */
 export function isValidURI(uri: string): boolean {
-  const uriRegex = /^[a-zA-Z][a-zA-Z\d+\-.]*:\/\/[^\s/$.?#].[^\s]*$/;
+  if (uri === '') return false;
+  
+  // Simple regex for standard URI validation
+  // Supports common schemes like http://, https://, ftp://, kafka://, aws://, etc.
+  const uriRegex = /^[a-zA-Z][a-zA-Z0-9+\-.]*:\/\/[^\s/$?.#].[^\s]*$/;
+  console.log(uriRegex.test(uri), uri);
   return uriRegex.test(uri);
 }
 
@@ -32,7 +37,7 @@ export function removeEmptyFields<T>(obj: T): T {
   return Object.fromEntries(
     Object.entries(obj)
       .map(([key, value]) => [key, removeEmptyFields(value)])
-      .filter(([_, value]) => value !== null && value !== undefined),
+      .filter(([, value]) => value !== null && value !== undefined),
   ) as T;
 }
 
