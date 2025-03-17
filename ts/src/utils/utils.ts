@@ -14,7 +14,6 @@ export function isValidURI(uri: string): boolean {
   // Simple regex for standard URI validation
   // Supports common schemes like http://, https://, ftp://, kafka://, aws://, etc.
   const uriRegex = /^[a-zA-Z][a-zA-Z0-9+\-.]*:\/\/[^\s/$?.#].[^\s]*$/;
-  console.log(uriRegex.test(uri), uri);
   return uriRegex.test(uri);
 }
 

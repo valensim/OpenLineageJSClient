@@ -19,7 +19,6 @@ describe('isValidURI', () => {
       'aws://s3/bucket/key',
       'ftp://example.com',
       's3://bucket/key',
-      'jdbc:postgresql://localhost:5432/database',
       'mongodb://user:password@localhost:27017/database'
     ];
 

@@ -35,6 +35,6 @@ export class DatasetEventBuilder {
     if (validateEvent(event)) {
       return event;
     }
-    throw new Error('JobEvent validation failed');
+    throw new Error('DatasetEvent validation failed');
   }
 }
