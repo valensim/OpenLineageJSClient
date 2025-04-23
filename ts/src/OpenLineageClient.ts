@@ -7,10 +7,18 @@ import { getTransportFromFile } from './transports/Factory.js';
  * OpenLineageClient is responsible for emitting events to a specified transport.
  */
 export class OpenLineageClient {
+  /**
+   * The transport instance used for emitting events.
+   * Can be null initially if loading from file fails before defaulting to ConsoleTransport.
+   */
   public transport: Transport | null;
 
   /**
    * Constructs an OpenLineageClient instance.
+   * If no transport is provided, it attempts to load configuration from
+   * the `openlineage.yaml` file using `getTransportFromFile()`.
+   * If loading from file fails or no transport is provided, it defaults to `ConsoleTransport`.
+   *
    * @param transport - A custom transport implementation (optional).
    */
   constructor(transport: Transport | null = null) {

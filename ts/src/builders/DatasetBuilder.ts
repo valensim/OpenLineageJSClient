@@ -12,7 +12,7 @@ export class DatasetBuilder {
   /**
    * Sets the name of the dataset.
    * @param name - The name of the dataset.
-   * @returns {DatasetBuilder}
+   * @returns The builder instance for method chaining.
    */
   setName(name: string): this {
     this.name = name;
@@ -22,7 +22,7 @@ export class DatasetBuilder {
   /**
    * Sets the namespace of the dataset.
    * @param namespace - The namespace of the dataset.
-   * @returns {DatasetBuilder}
+   * @returns The builder instance for method chaining.
    */
   setNamespace(namespace: string): this {
     this.namespace = namespace;
@@ -32,7 +32,7 @@ export class DatasetBuilder {
   /**
    * Sets the facets of the dataset.
    * @param facets - The facets of the dataset.
-   * @returns {DatasetBuilder}
+   * @returns The builder instance for method chaining.
    */
   setFacets(facets: DatasetFacets): this {
     this.facets = facets;
@@ -41,8 +41,8 @@ export class DatasetBuilder {
 
   /**
    * Builds and returns a Dataset instance.
-   * @returns {Dataset}
-   * @throws {Error} If required fields are missing.
+   * @returns The constructed Dataset.
+   * @throws {Error} If required fields (name, namespace) are missing.
    */
   build(): Dataset {
     if (!this.name || !this.namespace) {
