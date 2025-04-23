@@ -24,25 +24,16 @@ OpenLineage is an open standard for data lineage collection and analysis. This c
 
 ## Installation
 
-As this package is not yet published to npm, you currently need to install it directly from the source or use it locally within this project structure.
+This package is published on npm ([https://www.npmjs.com/package/open-lineage-client](https://www.npmjs.com/package/open-lineage-client)).
 
-1.  **Clone the repository:**
-    """bash
-    git clone https://github.com/valensim/OpenLineageJSClient.git
-    cd OpenLineageJSClient/ts
-    """
+Install the client using npm or your preferred package manager:
 
-2.  **Install dependencies:**
-    """bash
-    npm install
-    """
-
-3.  **Build the project:**
-    """bash
-    npm run build
-    """
-
-After building, you can import the client from the `dist` directory in your project or use relative paths if working within the cloned repository structure.
+```bash
+npm install open-lineage-client
+# or
+# yarn add open-lineage-client
+# pnpm add open-lineage-client
+```
 
 ## Usage
 
@@ -56,24 +47,24 @@ First, create an instance of `OpenLineageClient`. You can provide a specific tra
 
 If an `openlineage.yaml` file exists in the project root (where the application is run), the client will attempt to load the configuration from it. If the file is not found or is invalid, it defaults to `ConsoleTransport`.
 
-"""typescript
-import { OpenLineageClient } from 'open-lineage-client'; // Adjust path based on your setup
+```typescript
+import { OpenLineageClient } from 'open-lineage-client';
 
 const client = new OpenLineageClient();
-"""
+```
 
 **Explicit Transport (e.g., HTTP):**
 
 You can explicitly configure a transport, such as `HttpTransport`.
 
-"""typescript
-import { OpenLineageClient } from 'open-lineage-client'; // Adjust path
-import { HttpTransport, HttpConfig } from 'open-lineage-client'; // Adjust path
+```typescript
+import { OpenLineageClient } from 'open-lineage-client';
+import { HttpTransport, HttpConfig } from 'open-lineage-client';
 
 const httpConfig = new HttpConfig("http://localhost:5000/api/v1/lineage");
 const transport = new HttpTransport(httpConfig);
 const client = new OpenLineageClient(transport);
-"""
+```
 
 See the [Configuration](#configuration) section for more details on setting up transports.
 
@@ -81,14 +72,15 @@ See the [Configuration](#configuration) section for more details on setting up t
 
 Use the provided builders to construct OpenLineage events. The primary builder is `RunEventBuilder`.
 
-"""typescript
+```typescript
 import {
   RunEventBuilder,
   JobBuilder,
   RunBuilder,
   DatasetBuilder,
   EventType
-} from 'open-lineage-client'; // Adjust path
+} from 'open-lineage-client';
+import { v4 as uuidv4 } from 'uuid'; // Example: using uuid for run IDs
 
 // Define Job details
 const job = new JobBuilder()
@@ -98,7 +90,7 @@ const job = new JobBuilder()
 
 // Define Run details
 const run = new RunBuilder()
-  .setRunId("a7f5f9b5-a6f1-47b8-8a9e-40f4e23c9b7c") // Generate a unique run ID
+  .setRunId(uuidv4()) // Generate a unique run ID
   .build();
 
 // Define Input/Output Datasets (optional)
@@ -113,8 +105,10 @@ const outputDataset = new DatasetBuilder()
   .build();
 
 // Build the START event
-const producer = "https://github.com/valensim/OpenLineageJSClient/v/1.1.1"; // Your instrumenting application
-const schemaURL = "https://openlineage.io/spec/1-0-2/OpenLineage.json"; // OL Schema version
+// Use your application/library identifier as producer
+const producer = "https://github.com/my-org/my-app/v/1.0.0";
+// Specify the OpenLineage schema version you are using
+const schemaURL = "https://openlineage.io/spec/1-0-5/OpenLineage.json"; // Use the latest relevant version
 
 const startEvent = new RunEventBuilder()
   .setEventType(EventType.START)
@@ -138,21 +132,25 @@ const completeEvent = new RunEventBuilder()
   .setInputs([inputDataset]) // Usually repeated from START
   .setOutputs([outputDataset]) // Usually repeated from START
   .build();
-"""
+```
 
 ### 3. Sending Events
 
-Use the `emit` method of the client instance to send the constructed events.
+Use the `emit` method of the client instance to send the constructed events. Note that `emit` returns a Promise.
 
-"""typescript
-// Send the START event
-client.emit(startEvent);
+```typescript
+async function sendEvents() {
+  // Send the START event
+  await client.emit(startEvent);
 
-// ... your job processing logic ...
+  // ... your job processing logic ...
 
-// Send the COMPLETE event
-client.emit(completeEvent);
-"""
+  // Send the COMPLETE event
+  await client.emit(completeEvent);
+}
+
+sendEvents().catch(console.error);
+```
 
 ## Configuration
 
@@ -167,15 +165,15 @@ The YAML file defines the transport type and its specific configuration.
 
 **Example: Console Transport**
 
-"""yaml
+```yaml
 transport:
   type: console
 # No further config needed for console
-"""
+```
 
 **Example: HTTP Transport**
 
-"""yaml
+```yaml
 transport:
   type: http
   config:
@@ -185,7 +183,7 @@ transport:
     # Optional: Authentication Token (Bearer)
     # token: Bearer your-api-key
 
-    # Optional: Axios request options
+    # Optional: Axios request options (passed directly to Axios)
     options:
       timeout: 5000 # Request timeout in milliseconds (default: depends on Axios)
       headers:
@@ -195,8 +193,8 @@ transport:
         maxRetries: 5               # Default: 3
         initialRetryDelay: 1000     # Default: 1000 ms
         maxRetryDelay: 30000        # Default: 30000 ms
-        # retryStatusCodes: [429, 503] # Optional: Override default retry codes
-"""
+        # retryStatusCodes: [429, 503] # Optional: Override default retry codes [408, 429, 500, 502, 503, 504]
+```
 
 **Supported `transport.type` values:**
 
@@ -213,7 +211,7 @@ Here's a more complete example demonstrating sending START and COMPLETE events u
 
 **1. Create `openlineage.yaml`:**
 
-"""yaml
+```yaml
 # openlineage.yaml
 transport:
   type: http
@@ -221,11 +219,11 @@ transport:
     url: http://localhost:5000/api/v1/lineage # Replace with your Marquez/OL endpoint
     options:
       timeout: 10000
-"""
+```
 
 **2. Your Application Code (`myJob.ts`):**
 
-"""typescript
+```typescript
 import {
   OpenLineageClient,
   RunEventBuilder,
@@ -233,7 +231,7 @@ import {
   RunBuilder,
   DatasetBuilder,
   EventType
-} from 'open-lineage-client'; // Adjust path as needed
+} from 'open-lineage-client';
 import { v4 as uuidv4 } from 'uuid'; // Using uuid library for run IDs
 
 async function runMyJob() {
@@ -241,7 +239,7 @@ async function runMyJob() {
   const client = new OpenLineageClient();
 
   const producer = "https://github.com/my-org/my-app/v/1.0.0";
-  const schemaURL = "https://openlineage.io/spec/1-0-2/OpenLineage.json";
+  const schemaURL = "https://openlineage.io/spec/1-0-5/OpenLineage.json"; // Use latest relevant schema
 
   const job = new JobBuilder().setNamespace("etl-namespace").setName("daily-report-job").build();
   const run = new RunBuilder().setRunId(uuidv4()).build(); // Generate unique run ID
@@ -296,7 +294,8 @@ async function runMyJob() {
       .setSchemaURL(schemaURL)
       .setJob(job)
       .setRun(run)
-      // Optionally include error details using facets
+      // Optionally include error details using facets (e.g., ErrorMessageRunFacet)
+      // .addFacet('errorMessage', new ErrorMessageRunFacet(String(error.message), 'TypeScript', error.stack))
       .build();
 
     console.log('Sending FAIL event...');
@@ -304,58 +303,74 @@ async function runMyJob() {
   }
 }
 
-runMyJob();
-"""
+runMyJob().catch(console.error);
+```
 
 ## Development
 
-This section provides guidance for developing and testing the client library itself.
+This section provides guidance for developing and testing the client library itself. If you just want to use the client, see the [Installation](#installation) and [Usage](#usage) sections.
+
+### Local Setup
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/valensim/OpenLineageJSClient.git
+    cd OpenLineageJSClient/ts
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Build the project:**
+    ```bash
+    npm run build
+    ```
 
 ### Running Tests
 
 Tests are written using [Vitest](https://vitest.dev/).
 
 1.  **Navigate to the TypeScript directory:**
-    """bash
-    cd ts
-    """
+    ```bash
+    cd ts # If not already there
+    ```
 
 2.  **Set up Environment Variables:**
-    Create a `.env` file in the `ts/` directory. You can copy the structure from the existing `.env` file if needed (though one should exist from the clone). This file is used to configure certain test behaviors:
-    """dotenv
+    Ensure a `.env` file exists in the `ts/` directory (one should exist from the clone). This file configures test behaviors:
+    ```dotenv
     # ts/.env
     MARQUEZ_UP=false
     DEBUG=false
-    """
+    ```
     *   `MARQUEZ_UP`: Set to `true` to enable integration tests that require a running instance of a Marquez server (configured via `openlineage.yaml`). Defaults to `false`, skipping these tests.
     *   `DEBUG`: Set to `true` to enable more verbose logging or specific debug behaviors within the tests. Defaults to `false`.
 
 3.  **Run tests:**
-    """bash
+    ```bash
     npm test
-    """
+    ```
 
     To run tests with coverage reports:
-    """bash
+    ```bash
     npm run coverage
-    """
+    ```
 
 ### Building
 
 To transpile the TypeScript code to JavaScript in the `dist` directory:
 
-"""bash
-cd ts
+```bash
+# Ensure you are in the ts/ directory
 npm run build
-"""
+```
 
 ### Linting and Formatting
 
-This project uses ESLint for linting and Prettier for code formatting.
+This project uses ESLint for linting and Prettier for code formatting. Run these from the `ts/` directory.
 
-"""bash
-cd ts
-
+```bash
 # Check formatting
 npm run format:check
 
@@ -367,7 +382,7 @@ npm run lint
 
 # Fix lint errors automatically
 npm run lint:fix
-"""
+```
 
 ### Contributing
 
@@ -375,7 +390,7 @@ Contributions are welcome! Please feel free to open an issue on the GitHub repos
 
 ## TypeScript Usage
 
-This library is written in TypeScript and includes type definitions (`.d.ts` files) in the distributed package (`dist/` directory).
+This library is written in TypeScript and includes type definitions (`.d.ts` files) in the distributed package.
 
 *   **TypeScript Projects:** You get full type safety and autocompletion when importing the client.
 *   **JavaScript Projects:** You can use this library in plain JavaScript projects as well. While you won't get compile-time type checking, the library is fully functional. Modern editors might still leverage the included type definitions for better IntelliSense.
