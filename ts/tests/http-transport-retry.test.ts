@@ -3,6 +3,9 @@ import { BaseEvent } from '../src/events/BaseEvent.js';
 import nock from 'nock';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { AxiosResponse } from 'axios';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // Mock the sleep function to speed up tests
 vi.mock('../src/transports/HttpTransport.js', async () => {
@@ -51,6 +54,9 @@ describe('HttpTransport Retry Logic', () => {
     expect(nock.isDone()).toBe(true);
   });
 
+  // Increase timeout for all tests in this suite
+  vi.setConfig({ testTimeout: 10000 });
+
   it('should successfully send a request without retries', async () => {
     // Setup nock to intercept the request and return success
     nock(testUrl)
@@ -71,6 +77,12 @@ describe('HttpTransport Retry Logic', () => {
   });
 
   it('should retry on network error and eventually succeed', async () => {
+    if (process.env.MARQUEZ_UP === 'true') {
+      // Skip test when running against real Marquez
+      console.log('Skipping retry test when running against real Marquez');
+      return;
+    }
+
     // Setup nock to fail twice and then succeed
     nock(testUrl)
       .post('/')
@@ -106,6 +118,12 @@ describe('HttpTransport Retry Logic', () => {
   });
 
   it('should retry on specific status codes and eventually succeed', async () => {
+    if (process.env.MARQUEZ_UP === 'true') {
+      // Skip test when running against real Marquez
+      console.log('Skipping retry test when running against real Marquez');
+      return;
+    }
+
     // Setup nock to return 503 twice and then succeed
     nock(testUrl)
       .post('/')

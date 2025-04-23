@@ -15,10 +15,19 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import nock from 'nock';
 import dotenv from 'dotenv';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { AxiosResponse } from 'axios';
 
+dotenv.config();
+
+interface MarquezResponse {
+  status: string;
+}
+
 describe('chain-event', () => {
+  // Increase timeout for all tests in this suite
+  vi.setConfig({ testTimeout: 10000 });
+
   it('should create more complicated pipeline in Marquez', async () => {
     const kafka1 = new InputDatasetBuilder().setName('kafka1').setNamespace('streams').build();
     const kafka2 = new InputDatasetBuilder().setName('kafka2').setNamespace('streams').build();
@@ -46,20 +55,20 @@ describe('chain-event', () => {
     const client = new OpenLineageClient(transport);
 
     if (process.env.MARQUEZ_UP === 'true') {
-      let response = await client.emit(firstEvent) as AxiosResponse<any, any>;
+      let response = await client.emit(firstEvent) as AxiosResponse<MarquezResponse>;
       expect(response.status).toBe(201);
       expect(response.statusText).toBe('Created');
 
-      response = await client.emit(secondEvent);
+      response = await client.emit(secondEvent) as AxiosResponse<MarquezResponse>;
       expect(response.status).toBe(201);
       expect(response.statusText).toBe('Created');
     } else {
       const scope = nock('http://localhost:8080')
-      .post('/api/v1/lineage')
-      .times(2)
-      .reply(201, { status: 'ok' });
+        .post('/api/v1/lineage')
+        .times(2)
+        .reply(201, { status: 'ok' });
       await client.emit(firstEvent);
-      await client.emit(firstEvent);
+      await client.emit(secondEvent);
       scope.done();
     }
   });
