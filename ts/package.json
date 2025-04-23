@@ -1,6 +1,6 @@
 {
 	"name": "open-lineage-client",
-	"version": "1.1.1",
+	"version": "1.1.3",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -17,10 +17,23 @@
 	},
 	"author": "Simon Valenta",
 	"license": "ISC",
-	"description": "Js client for Open Lineage",
+	"description": "TypeScript/JavaScript client for creating and sending OpenLineage standard events.",
+	"keywords": [
+		"openlineage",
+		"open-lineage",
+		"lineage",
+		"data lineage",
+		"client",
+		"typescript",
+		"javascript"
+	],
 	"repository": {
 	  "type": "git",
 	  "url": "git+https://github.com/valensim/OpenLineageJSClient.git"
+	},
+	"homepage": "https://github.com/valensim/OpenLineageJSClient#readme",
+	"bugs": {
+		"url": "https://github.com/valensim/OpenLineageJSClient/issues"
 	},
 	"devDependencies": {
 		"@types/js-yaml": "^4.0.9",

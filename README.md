@@ -16,7 +16,7 @@ OpenLineage is an open standard for data lineage collection and analysis. This c
     *   `ConsoleTransport`: Prints events to the console (useful for debugging).
     *   `HttpTransport`: Sends events to an OpenLineage-compatible HTTP endpoint (like Marquez).
 *   **Configuration:** Flexible configuration options via YAML file or direct instantiation.
-*   **Standard Compliance:** Adheres to the OpenLineage [specification](https://openlineage.io/spec/).
+*   **Standard Compliance:** Adheres to the OpenLineage [specification](https://openlineage.io/docs/).
 
 ## Prerequisites
 
@@ -30,9 +30,7 @@ Install the client using npm or your preferred package manager:
 
 ```bash
 npm install open-lineage-client
-# or
-# yarn add open-lineage-client
-# pnpm add open-lineage-client
+
 ```
 
 ## Usage
