@@ -33,3 +33,5 @@ yarn-error.log*%
 coverage/
 
 *.tgz
+
+docs/
