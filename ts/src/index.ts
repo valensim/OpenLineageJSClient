@@ -27,6 +27,12 @@ export { RunBuilder } from './builders/RunBuilder.js';
 export { RunEventBuilder } from './builders/RunEventBuilder.js';
 export { RunFacetsBuilder } from './builders/RunFacetsBuilder.js';
 
+// Events
+export { DatasetEvent } from './events/DatasetEvent.js';
+export { JobEvent } from './events/JobEvent.js';
+export { RunEvent } from './events/RunEvent.js';
+export { BaseEvent } from './events/BaseEvent.js';
+
 // Facets
 export {
   DatasetFacets,
