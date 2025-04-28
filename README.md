@@ -382,6 +382,23 @@ npm run lint
 npm run lint:fix
 ```
 
+### Generating Documentation
+
+Technical documentation based on the TSDoc comments in the TypeScript source code can be generated using [TypeDoc](https://typedoc.org/).
+
+1.  **Navigate to the TypeScript directory:**
+    ```bash
+    cd ts # If not already there
+    ```
+
+2.  **Run the generation script (defined in `package.json`):**
+    ```bash
+    npm run docs
+    ```
+    This command uses TypeDoc to parse the files in `ts/src`, extracts the documentation comments, and outputs the generated HTML documentation to the `docs/` directory at the project root (`client/docs/`).
+
+    To configure TypeDoc's behavior (e.g., entry points, theme), you can modify the command in `package.json` or use a `typedoc.json` configuration file.
+
 ### Contributing
 
 Contributions are welcome! Please feel free to open an issue on the GitHub repository to discuss potential changes or submit a pull request.
