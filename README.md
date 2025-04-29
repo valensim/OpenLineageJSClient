@@ -26,12 +26,39 @@ OpenLineage is an open standard for data lineage collection and analysis. This c
 
 This package is published on npm ([https://www.npmjs.com/package/open-lineage-client](https://www.npmjs.com/package/open-lineage-client)).
 
-Install the client using npm or your preferred package manager:
+Install the client using npm:
 
 ```bash
 npm install open-lineage-client
 
 ```
+
+### Installation from Source
+
+If you want to use the latest code directly from the repository or contribute to development, you can install the dependencies and build the package from the source files:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/valensim/OpenLineageJSClient.git
+    cd OpenLineageJSClient/client
+    ```
+
+2.  **Navigate to the TypeScript package directory:**
+    ```bash
+    cd ts
+    ```
+
+3.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+4.  **Build the project:**
+    ```bash
+    npm run build
+    ```
+
+After building, the transpiled JavaScript files will be available in the `ts/dist` directory. You can then potentially use `npm link` within the `ts/` directory to make the local build available globally or within another project, or directly import the built files depending on your needs.
 
 ## Usage
 
