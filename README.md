@@ -26,7 +26,7 @@ OpenLineage is an open standard for data lineage collection and analysis. This c
 
 This package is published on npm ([https://www.npmjs.com/package/open-lineage-client](https://www.npmjs.com/package/open-lineage-client)).
 
-Install the client using npm:
+Install the client using npm (prefered method):
 
 ```bash
 npm install open-lineage-client
